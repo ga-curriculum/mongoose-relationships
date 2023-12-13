@@ -1,4 +1,4 @@
-# ![[tktk Module Name]](./assets/tktk-hero.png)
+# ![Mongoose Relationships](./assets/tktk-hero.png)
 
 ## About
 
