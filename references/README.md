@@ -1,4 +1,4 @@
-# ![[tktk Module Name] - References](./assets/hero.png)
+# ![Mongoose Relationships - References](./assets/hero.png)
 
 ## Lesson references
 
