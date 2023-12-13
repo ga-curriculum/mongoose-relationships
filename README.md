@@ -14,18 +14,20 @@ tktk Write a short but descriptive summary of the content in this module.
 
 | Lesson | Video Time | Video | Skills |
 | ------ |:----------:|:-----:| ------ |
-| [tktk Microlesson Name](./tktk-microlesson-01/README.md) | -- | -- | tktk skills covered |
-| [tktk Microlesson Name](./tktk-microlesson-02/README.md) | -- | -- | tktk skills covered |
-| [tktk Microlesson Name](./tktk-microlesson-03/README.md) | -- | -- | tktk skills covered |
+| [Setup](./setup/README.md) | -- | -- | -- |
+| [Concepts](./concepts/README.md) | -- | -- | tktk skills covered |
+| [Embedding](./embedding/README.md) | -- | -- | tktk skills covered |
 | **Total content**                                        | -- | -- |                     |
 
 ## Level Up content
 
 | Lesson | Video Time | Video | Skills |
 | ------ |:----------:|:-----:| ------ |
-| [tktk Level Up Microlesson Name](./level-up/tktk-microlesson-01.md) | -- | -- | tktk skills covered |
-| [tktk Level Up Microlesson Name](./level-up/tktk-microlesson-02.md) | -- | -- | tktk skills covered |
-| [tktk Level Up Microlesson Name](./level-up/tktk-microlesson-03.md) | -- | -- | tktk skills covered |
+| [Referencing](./level-up/referencing.md) | -- | -- | tktk skills covered |
+| [Removing Embedded Subdocuments](./level-up/removing-embedded-subdocuments.md) | -- | -- | tktk skills covered |
+| [Updating Embedded Subdocuments](./level-up/updating-embedded-subdocuments.md) | -- | -- | tktk skills covered |
+| [Finding a Parent From the Child](./level-up/finding-a-parent-from-the-child.md) | -- | -- | tktk skills covered |
+| [Pitfalls of Referencing](./level-up/pitfalls-of-referencing.md) | -- | -- | tktk skills covered |
 | **Total Level Up content**                                          | -- | -- |                     |
 
 ## References
