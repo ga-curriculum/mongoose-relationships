@@ -49,6 +49,7 @@ const mongoose = require('mongoose');
 
 const subTaskSchema = mongoose.Schema({
   text: String,
+  priorityLevel: String,
   isComplete: Boolean
 })
 
@@ -67,41 +68,37 @@ module.exports = Todo;
 
 ## Adding a subtask
 
+Add the following to bottom of `server.js`, under our existing query files: 
+
 ```js
-/*-------------------------------- Query Functions --------------------------------*/
-
-const Todo = require('./models/todo.js');
-
-const createTodo = async () => {
-  const todoData = {
-    text: "learn React",
-    isComplete: false,
-  };
-  const todo = await Todo.create(todoData);
-  console.log("New todo:", todo);
-};
-
 const createSubTask = async () => {
   // Assume that the todo we want to create a
   // sub-task for has the following id: 
   const id = '6573745144784f6dc034e1df'
+  // Look up the todo by id, assign the returned object to `todo`
   const todo = await Todo.findById(id);
 
   const subTaskData = {
-    text: "learn how props work",
+    text: "Learn how props work",
+    priorityLevel: "High",
     isComplete: false,
   };
 
-  const subTask = todo.push(subTaskData);
+  // Push the new sub-task data into the subTasks array on the todo:
+  const subTask = todo.subTasks.push(subTaskData);
+  // Save the parent document: 
   await todo.save();
-}
+};
+```
 
+[tktk how does hunter want to do this]
+To find a specific sub-task, we can use the built in `.id` method that mongoose arrays have: 
+
+```js
 const findTodos = async () => {
   const todos = await Todo.find({ });
   console.log("All todos:", todos);
 };
 ```
-
--> function to add subtask
 -> find to find it
 
