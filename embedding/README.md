@@ -6,15 +6,34 @@
 
 Embedding is the practice of storing related data within a single document. This is achieved by nesting *sub-documents* or arrays of sub-documents inside a parent document.
 
-A subdocument is a document nested within another document. Subdocuments are very similar to regular documents. The difference is that they are not saved directly - but instead when the document they are embedded within is saved. 
+Here’s an example of what a document with embedded data looks like:
+```shell
+// assume a document from a people collection
+{
+  _id: ObjectId("5099803df3f4948bd2e983a4"),
+  name: "Joe Smith",
+  contacts: [
+    {
+      _id: ObjectId("5099803df3f4948bd2e98fff"),
+      type: "mobile",
+      contact: "(555) 555-5555"
+    },
+    {
+      _id: ObjectId("5099803df3f4948bd2e99005"),
+      type: "email",
+      contact: "joe@smith.com"
+    }
+  ]
+}
+```
+
+> A subdocument is a document nested within another document. Subdocuments are very similar to regular documents - the difference is that they are not saved directly, but instead when the document they are embedded within is saved. 
 
 ## Why use Embedding
 
 Embedding connected data in a single document can reduce the number of read operations required to obtain data. In general, you should structure your schema so your application receives all of its required information in a single read operation.
 
 ## Embedding sub-documents
-
-
 
 Let's say we want to let users create sub-tasks under each Todo. For instance, if a user created a Todo called "Pack for Vacation", they could have associated sub-tasks like "Toothbrush", "Swimsuit", and "Laptop". 
 
