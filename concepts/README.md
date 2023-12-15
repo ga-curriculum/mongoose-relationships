@@ -34,6 +34,7 @@ Example: A person has visited many places; places have been visited by many peop
 There are two ways to model related data in MongoDB:
 
 1. Using **embedding**, where parent documents hold sub-documents.
+
 2. Using **referencing**, where a document contains just the related document’s `ObjectId`.
 
 Both approaches can be used simultaneously in the same document.
