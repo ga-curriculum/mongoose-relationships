@@ -1,3 +1,3 @@
-# ![Mongoose Relationships - Level Up - Removing Embedded Subdocuments](./assets/hero.png)
+# ![Mongoose Relationships - Level Up - Removing Embedded Sub-documents](./assets/hero.png)
 
 

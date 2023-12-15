@@ -1,4 +1,4 @@
-# ![Mongoose Relationships - tktk Microlesson Name](./assets/hero.png)
+# ![Mongoose Relationships - Concepts](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will understand how to model relationships in MongoDB.
 
@@ -63,13 +63,5 @@ Finally, we need to denote the type of relationship that these lines represent. 
 [tktk this example, but probably don't need examples of zero]
 
 
-[tktk simple ERD with all three forms of ordinality/cardinality combinations]
+[tktk simple ERD with all three forms of cardinality combinations]
 
-
-## Considerations when forming relationships
-
-When planning: 
-
-is this displayed by itself (you'll need to go through parent)
-wary of embedding if moving through network reqs
-subdocs only found on parent (hard to relate data)

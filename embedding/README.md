@@ -27,7 +27,7 @@ Here’s an example of what a document with embedded data looks like (assume a d
 }
 ```
 
-> A subdocument is a document nested within another document. Subdocuments are very similar to regular documents - the difference is that they are not saved directly, but instead when the document they are embedded within is saved. 
+> A sub-document is a document nested within another document. Sub-documents are very similar to regular documents - the difference is that they are not saved directly, but instead when the document they are embedded within is saved. 
 
 ## Why use Embedding
 
@@ -60,13 +60,13 @@ const Todo = mongoose.model('Todo', todoSchema);
 module.exports = Todo;
 ```
 
-> Subdocuments have their own **schema**, but since subdocuments are not saved to a collection, we **do not compile a subdocument’s schema into a Model**.
+> Sub-documents have their own **schema**, but since sub-documents are not saved to a collection, we **do not compile a sub-document’s schema into a Model**.
 
 Great, we now have two schemas. The next step is to give them a relationship, as they are currently not associated at all. 
 
 To do so, we nest our `subTaskSchema` in our `todoSchema`.
 
-Mongoose represents an array of subdocuments as an embedded schema wrapped in square brackets (`[schema]`). This indicates that subTasks will be an array whose elements conform to the `subTaskSchema`. 
+Mongoose represents an array of sub-documents as an embedded schema wrapped in square brackets (`[schema]`). This indicates that subTasks will be an array whose elements conform to the `subTaskSchema`. 
 
 ```js
 const mongoose = require('mongoose');
