@@ -31,10 +31,12 @@ Example: A person has visited many places; places have been visited by many peop
 
 ## Two approaches to forming relationships
 
-Overview of relationships (how to form)
+There are two ways to model related data in MongoDB:
 
-[tktk embedded]
-[tktk referencing (touch on the idea; differs from embeddeding, referencing by _id)]
+1. Using **embedding**, where parent documents hold sub-documents.
+2. Using **referencing**, where a document contains just the related document’s `ObjectId`.
+
+Both approaches can be used simultaneously in the same document.
 
 
 ## Modeling relationships in MongoDB with ERDs
