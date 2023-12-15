@@ -1,6 +1,6 @@
 # ![Mongoose Relationships - tktk Microlesson Name](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will understand how to model relationships in MongoDB.
 
 ## MongoDB Relationships
 

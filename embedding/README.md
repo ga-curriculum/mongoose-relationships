@@ -6,9 +6,9 @@
 
 Embedding is the practice of storing related data within a single document. This is achieved by nesting *sub-documents* or arrays of sub-documents inside a parent document.
 
-Here’s an example of what a document with embedded data looks like:
+Here’s an example of what a document with embedded data looks like (assume a document from a people collection):
+
 ```shell
-// assume a document from a people collection
 {
   _id: ObjectId("5099803df3f4948bd2e983a4"),
   name: "Joe Smith",
@@ -46,6 +46,7 @@ const mongoose = require('mongoose');
 
 const subTaskSchema = mongoose.Schema({
   text: String,
+  priorityLevel: String,
   isComplete: Boolean
 })
 
@@ -111,17 +112,8 @@ const createSubTask = async () => {
   const subTask = todo.subTasks.push(subTaskData);
   // Save the parent document: 
   await todo.save();
+  console.log('Modified todo:', todo);
 };
 ```
 
-[tktk how does hunter want to do this]
-To find a specific sub-task, we can use the built in `.id` method that mongoose arrays have: 
-
-```js
-const findTodos = async () => {
-  const todos = await Todo.find({ });
-  console.log("All todos:", todos);
-};
-```
-
-
+Call the `createSubTask` function and review the `todo` in the console.log. You should see an embedded sub-document in the `todo.subTask` array.
