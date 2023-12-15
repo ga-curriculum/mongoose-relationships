@@ -21,7 +21,6 @@ In typical **one-to-many relationships**, it's common for the **many** side (`To
 
 However, certain scenarios might call for the opposite approach, where the `User` document holds an array of references to the associated `Todo` documents. For example, if your application frequently retrieves a user along with all their assigned tasks, this inverse referencing could be beneficial. Mongoose is versatile enough to support both approaches.
 
-
 ## Why choose referencing over embedding?
 
 While embedding can be more efficient for read operations, referencing has its advantages:
