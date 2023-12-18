@@ -27,7 +27,8 @@ Here’s an example of what a document with embedded data looks like (assume a d
 }
 ```
 
-> A sub-document is a document nested within another document. Sub-documents are very similar to regular documents - the difference is that they are not saved directly, but instead when the document they are embedded within is saved. 
+> 💡 A sub-document is a document nested within another document. Sub-documents are very similar to regular documents - the difference is that they are not saved directly, but instead when the document they are embedded within is saved. 
+
 
 ## Why use Embedding
 
@@ -60,7 +61,7 @@ const Todo = mongoose.model('Todo', todoSchema);
 module.exports = Todo;
 ```
 
-> Sub-documents have their own **schema**, but since sub-documents are not saved to a collection, we **do not compile a sub-document’s schema into a Model**.
+> 💡 Sub-documents have their own **schema**, but since sub-documents are not saved to a collection, we **do not compile a sub-document’s schema into a Model**.
 
 Great, we now have two schemas. The next step is to give them a relationship, as they are currently not associated at all. 
 
@@ -88,7 +89,7 @@ const Todo = mongoose.model('Todo', todoSchema);
 module.exports = Todo;
 ```
 
-> As with normal JavaScript conventions, the field name for this array should be a pluralized version of the elements it contains. In this case, it makes sense to refer to an array full of individual subTask elements as `subTasks`. 
+> 🏆 As with normal JavaScript conventions, the field name for this array should be a pluralized version of the elements it contains. In this case, it makes sense to refer to an array full of individual subTask elements as `subTasks`. 
 
 ## Adding a subtask
 
@@ -98,9 +99,9 @@ Add the following to bottom of `server.js`, under our existing query files:
 const createSubTask = async () => {
   // Assume that the todo we want to create a
   // sub-task for has the following id: 
-  const id = '6573745144784f6dc034e1df'
+  const todoId = '657b25adc8146427465857d7'
   // Look up the todo by id, assign the returned object to `todo`
-  const todo = await Todo.findById(id);
+  const todo = await Todo.findById(todoId);
 
   const subTaskData = {
     text: "Learn how props work",
@@ -117,3 +118,21 @@ const createSubTask = async () => {
 ```
 
 Call the `createSubTask` function and review the `todo` in the console.log. You should see an embedded sub-document in the `todo.subTask` array.
+
+
+```plaintext
+Modified todo: {
+  _id: new ObjectId('657b25adc8146427465857d7'),
+  text: 'Learn React',
+  isComplete: false,
+  __v: 1,
+  subTasks: [
+    {
+      text: 'Learn how props work',
+      priorityLevel: 'High',
+      isComplete: false,
+      _id: new ObjectId('6580677cf30bfef697ae046f')
+    }
+  ]
+}
+```
