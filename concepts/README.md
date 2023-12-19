@@ -12,7 +12,6 @@ Data entities are characterized by their attributes and relationships with other
 
 When working with data models in MongoDB, the primary decision revolves around how to handle relationships between data. 
 
-
 ## Types of relationships in MongoDB
 
 The three types of relationships you'll encounter when working with a mongoDB database are: 
@@ -28,7 +27,6 @@ Example: A person has visited many places; places have been visited by many peop
 
 > 🧠 Within data modeling, the number of documents that a relationship can reference is known as its Cardinality. In the above examples, "to-one" vs. "to-many" are the two possible cardinalities. 
 
-
 ## Two approaches to forming relationships
 
 There are two ways to model related data in MongoDB:
@@ -38,7 +36,6 @@ There are two ways to model related data in MongoDB:
 2. Using **referencing**, where a document contains just the related document’s `ObjectId`.
 
 Both approaches can be used simultaneously in the same document.
-
 
 ## Modeling relationships in MongoDB with ERDs
 
@@ -64,4 +61,3 @@ Finally, we need to denote the type of relationship that these lines represent. 
 
 
 [tktk simple ERD with all three forms of cardinality combinations]
-

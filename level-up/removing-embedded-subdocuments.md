@@ -1,104 +1,57 @@
 # ![Mongoose Relationships - Level Up - Removing Embedded Sub-documents](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning Objective:** By the end of this lesson, students will be able to remove embedded sub-documents in Mongoose.
 
-embedding is good for read
-but disadvantage comes from added complexity when making changes to embedded subdocuments
-why? subdocs are never compiled to a model, no model methods
-this means, when we want to find, delete, or update a sub doc, we must first go through the parent document
+## Removing subdocuments
 
-thankfully, there are various methods available for dealing with sub docs
+Similar to adding subdocuments with the `push()` method, Mongoose provides a method for removal called `pull()`. As with the `push()` method, once a subdocument has been pulled, we must call `save()` on the parent to reflect those changes in the database.
 
-## finding a subdoc
-
-Each subdocument has an _id by default. 
-Mongoose document arrays have a special id method for searching a document array to find a document with a given _id.
-
-const doc = parent.children.id(_id);
+Take a look at the example below:
 
 ```javascript
-const findSubTask = async () => {
-  const todoId = '657b25adc8146427465857d7'
-  const subTaskId = '6580677cf30bfef697ae046f'
+const todo = await Todo.findById(todoId);
 
-  const todo = await Todo.findById(todoId);
-  const subTask = todo.subTasks.id(subTaskId);
-
-  console.log('Subdocument:', subTask);
-}
+todo.subtasks.pull(subtaskId); 
+await todo.save();
 ```
 
-```plaintext
-Subdocument: {
-  text: 'Learn how props work',
-  priorityLevel: 'High',
-  isComplete: false,
-  _id: new ObjectId('6580677cf30bfef697ae046f')
-}
-```
+> 🤯 If a non-existent `ObjectId` is provided, the `pull()` method will not throw an error. If the method is unable to locate the subdocument in the document array, the parent document simply goes unmodified.
 
-## updating a subdoc
+## Implementing a Delete Operation
 
-find parent
-modify property
-save parent
-
-what if we need to update multiple properties on a subdoc?
-multiple ways to handle this, but programatically you could...
+Let's build out a function to remove a specific `subtask`. Add the following to `queries.js`:
 
 ```javascript
-const updateSubTask = async () => {
-  const todoId = '657b25adc8146427465857d7'
-  const subTaskId = '6580677cf30bfef697ae046f'
-
-  const todo = await Todo.findById(todoId);
-  const subTask = todo.subTasks.id(subTaskId);
-
-  subTask.isComplete = true
-  await todo.save()
-
-  console.log('Updated document:', todo);
-}
-```
-
-```plaintext
-Updated document: {
-  _id: new ObjectId('657b25adc8146427465857d7'),
-  text: 'Learn React',
-  isComplete: false,
-  __v: 1,
-  subTasks: [
-    {
-      text: 'Learn how props work',
-      priorityLevel: 'High',
-      isComplete: true,
-      _id: new ObjectId('6580677cf30bfef697ae046f')
-    }
-  ]
-}
-```
-
-
-## removing a subdoc
-parent.children.pull(childId)
-
-
-like push, need to save the parent
-
-
-```javascript
-const removeSubTask = async () => {
+const removeSubtask = async () => {
   const todoId = '657b25adc8146427465857d7';
-  const subTaskId = '6580677cf30bfef697ae046f';
+  const subtaskId = '6580677cf30bfef697ae046f';
 
   const todo = await Todo.findById(todoId);
-
-  todo.subTasks.pull(subTaskId);
+  todo.subtasks.pull(subtaskId);
   await todo.save();
 
   console.log('Updated document:', todo);
 };
 ```
+
+> 🚨 Make sure to replace `todoId` and `subtaskId` with actual `ObjectIds` from your database.
+
+Update and run `queries.js` with the following:
+
+```javascript
+const runQueries = async () => {
+  console.log('Queries running.');
+  await removeSubtask(); // Invoke the remove function
+};
+```
+
+Run the `queries.js` file with the following command:
+
+```bash
+node queries.js
+```
+
+You should see the following output in your terminal:
 
 ```plaintext
 Updated document: {
@@ -109,4 +62,3 @@ Updated document: {
   subTasks: []
 }
 ```
-
