@@ -1,6 +1,6 @@
 # ![Mongoose Relationships - Embedding](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will embed subdocuments in Mongoose.
 
 ## What is embedding?
 

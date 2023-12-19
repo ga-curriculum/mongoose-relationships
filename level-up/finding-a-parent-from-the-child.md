@@ -1,6 +1,6 @@
 # ![Mongoose Relationships - Level Up - Finding a Parent From the Child](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to locate a parent document based on the properties of a child document using Mongoose.
+**Learning objective:** By the end of this lesson, students will be able to find a parent document based on the properties of a child document using Mongoose.
 
 ## Finding a parent from a child
 

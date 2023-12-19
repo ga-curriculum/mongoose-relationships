@@ -1,4 +1,4 @@
-# ![Mongoose Relationships - Level Up - Finding Embedded Sub-documents](./assets/hero.png)
+# ![Mongoose Relationships - Level Up - Locating Embedded Sub-documents](./assets/hero.png)
 
 **Learning Objective:** By the end of this lesson, students will be able to find embedded subdocuments in Mongoose.
 
