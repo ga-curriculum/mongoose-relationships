@@ -38,17 +38,17 @@ Let's build out the relevant pieces now. Add the following to `queries.js`:
 const findParentAndRemoveSubtask = async () => {
   const todo = await Todo.findOne({
     'subtasks.text': 'Learn how props work'
-  })
+  });
 
   const subtask = todo.subtasks.find((subTask) => {
     return subtask.text === 'Learn how props work'
-  })
+  });
 
-  subtask.deleteOne()
+  subtask.deleteOne();
 
   await todo.save();
   console.log('Updated todo:', todo);
-}
+};
 ```
 
 > 💡 The `deleteOne()` method is accessible on each subdocument.
@@ -58,7 +58,7 @@ Next, call upon `findParentAndRemoveSubtask` in the `runQueries` function:
 ```javascript
 const runQueries = async () => {
   console.log('Queries running.');
-  await findParentAndRemoveSubTask()
+  await findParentAndRemoveSubTask();
 };
 ```
 

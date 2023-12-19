@@ -57,7 +57,7 @@ Next, call upon `updateSubtask` within the `runQueries` function:
 ```javascript
 const runQueries = async () => {
   console.log('Queries running.');
-  await updateSubtask();  // Call the update function
+  await updateSubtask();
 };
 ```
 

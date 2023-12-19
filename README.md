@@ -24,16 +24,17 @@ tktk Write a short but descriptive summary of the content in this module.
 | Lesson | Video Time | Video | Skills |
 | ------ |:----------:|:-----:| ------ |
 | [Referencing](./level-up/referencing.md) | -- | -- | tktk skills covered |
+| [Adding References](./level-up/adding-references.md) | -- | -- | tktk skills covered |
+| [Retrieving Referenced Documents](./level-up/referencing.md) | -- | -- | tktk skills covered |
+| [Finding Embedded Subdocuments](./level-up/removing-embedded-subdocuments.md) | -- | -- | tktk skills covered |
 | [Removing Embedded Subdocuments](./level-up/removing-embedded-subdocuments.md) | -- | -- | tktk skills covered |
 | [Updating Embedded Subdocuments](./level-up/updating-embedded-subdocuments.md) | -- | -- | tktk skills covered |
 | [Finding a Parent From the Child](./level-up/finding-a-parent-from-the-child.md) | -- | -- | tktk skills covered |
-| [Pitfalls of Referencing](./level-up/pitfalls-of-referencing.md) | -- | -- | tktk skills covered |
 | **Total Level Up content**                                          | -- | -- |                     |
 
 ## References
 
 📖 [Reference Materials](./references/README.md)
-
 
 ## Internal resources
 

@@ -36,12 +36,12 @@ const removeSubtask = async () => {
 
 > 🚨 Make sure to replace `todoId` and `subtaskId` with actual `ObjectIds` from your database.
 
-Update and run `queries.js` with the following:
+Next, call upon `removeSubtask` within the `runQueries` function:
 
 ```javascript
 const runQueries = async () => {
   console.log('Queries running.');
-  await removeSubtask(); // Invoke the remove function
+  await removeSubtask();
 };
 ```
 
