@@ -87,6 +87,31 @@ Add the following to your `.gitignore` file:
 .env
 ```
 
+## Defining a model
+
+Let's create that directory and a file to handle the `todos` resource:
+
+```bash
+mkdir models
+touch models/todo.js
+```
+
+Add the following to `models/todo.js`:
+
+```javascript
+// models/todo.js
+const mongoose = require('mongoose');
+
+const todoSchema = mongoose.Schema({
+  text: String,
+  isComplete: Boolean,
+});
+
+const Todo = mongoose.model('Todo', todoSchema);
+
+module.exports = Todo;
+```
+
 ## Query file
 
 Create a `queries.js` file. We'll use this file to execute various Mongoose operations:
