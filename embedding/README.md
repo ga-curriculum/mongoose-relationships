@@ -1,8 +1,8 @@
 # ![Mongoose Relationships - Embedding](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will embed subdocuments in Mongoose.
 
-## What is Embedding?
+## What is embedding?
 
 Embedding is the practice of storing related data within a single document. This is achieved by nesting *sub-documents* or arrays of sub-documents inside a parent document.
 
@@ -27,9 +27,9 @@ Here’s an example of what a document with embedded data looks like (assume a d
 }
 ```
 
-> A sub-document is a document nested within another document. Sub-documents are very similar to regular documents - the difference is that they are not saved directly, but instead when the document they are embedded within is saved. 
+> 💡 A sub-document is a document nested within another document. Sub-documents are very similar to regular documents - the difference is that they are not saved directly, but instead when the document they are embedded within is saved. 
 
-## Why use Embedding
+## Why use embedding
 
 Embedding connected data in a single document can reduce the number of read operations required to obtain data. In general, you should structure your schema so your application receives all of its required information in a single read operation.
 
@@ -44,7 +44,7 @@ First, let's create a new schema for our sub-tasks. They will need a `text` fiel
 ```js
 const mongoose = require('mongoose');
 
-const subTaskSchema = mongoose.Schema({
+const subtaskSchema = mongoose.Schema({
   text: String,
   priorityLevel: String,
   isComplete: Boolean
@@ -60,18 +60,18 @@ const Todo = mongoose.model('Todo', todoSchema);
 module.exports = Todo;
 ```
 
-> Sub-documents have their own **schema**, but since sub-documents are not saved to a collection, we **do not compile a sub-document’s schema into a Model**.
+> 💡 Sub-documents have their own **schema**, but since sub-documents are not saved to a collection, we **do not compile a sub-document’s schema into a Model**.
 
 Great, we now have two schemas. The next step is to give them a relationship, as they are currently not associated at all. 
 
-To do so, we nest our `subTaskSchema` in our `todoSchema`.
+To do so, we nest our `subtaskSchema` in our `todoSchema`.
 
-Mongoose represents an array of sub-documents as an embedded schema wrapped in square brackets (`[schema]`). This indicates that subTasks will be an array whose elements conform to the `subTaskSchema`. 
+Mongoose represents an array of sub-documents as an embedded schema wrapped in square brackets (`[schema]`). This indicates that subTasks will be an array whose elements conform to the `subtaskSchema`. 
 
 ```js
 const mongoose = require('mongoose');
 
-const subTaskSchema = mongoose.Schema({
+const subtaskSchema = mongoose.Schema({
   text: String,
   priorityLevel: String,
   isComplete: Boolean
@@ -80,7 +80,7 @@ const subTaskSchema = mongoose.Schema({
 const todoSchema = mongoose.Schema({
   text: String,
   isComplete: Boolean,
-  subTasks: [subTaskSchema]
+  subtasks: [subtaskSchema]
 });
 
 const Todo = mongoose.model('Todo', todoSchema);
@@ -88,32 +88,49 @@ const Todo = mongoose.model('Todo', todoSchema);
 module.exports = Todo;
 ```
 
-> As with normal JavaScript conventions, the field name for this array should be a pluralized version of the elements it contains. In this case, it makes sense to refer to an array full of individual subTask elements as `subTasks`. 
+> 🏆 As with normal JavaScript conventions, the field name for this array should be a pluralized version of the elements it contains. In this case, it makes sense to refer to an array full of individual subtask elements as `subtasks`. 
 
-## Adding a subtask
+## Adding a `subtask`
 
 Add the following to bottom of `server.js`, under our existing query files: 
 
 ```js
-const createSubTask = async () => {
+const createSubtask = async () => {
   // Assume that the todo we want to create a
   // sub-task for has the following id: 
-  const id = '6573745144784f6dc034e1df'
+  const todoId = '657b25adc8146427465857d7'
   // Look up the todo by id, assign the returned object to `todo`
-  const todo = await Todo.findById(id);
+  const todo = await Todo.findById(todoId);
 
-  const subTaskData = {
+  const subtaskData = {
     text: "Learn how props work",
     priorityLevel: "High",
     isComplete: false,
   };
 
   // Push the new sub-task data into the subTasks array on the todo:
-  const subTask = todo.subTasks.push(subTaskData);
+  const subtask = todo.subtasks.push(subtaskData);
   // Save the parent document: 
   await todo.save();
   console.log('Modified todo:', todo);
 };
 ```
 
-Call the `createSubTask` function and review the `todo` in the console.log. You should see an embedded sub-document in the `todo.subTask` array.
+Call the `createSubtask` function and review the `todo` in the console.log. You should see an embedded sub-document in the `todo.subtask` array.
+
+```plaintext
+Modified todo: {
+  _id: new ObjectId('657b25adc8146427465857d7'),
+  text: 'Learn React',
+  isComplete: false,
+  __v: 1,
+  subtasks: [
+    {
+      text: 'Learn how props work',
+      priorityLevel: 'High',
+      isComplete: false,
+      _id: new ObjectId('6580677cf30bfef697ae046f')
+    }
+  ]
+}
+```
