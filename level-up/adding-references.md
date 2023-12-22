@@ -15,7 +15,7 @@ const todoSchema = mongoose.Schema({
 });
 ```
 
-This field allows us to link documents in separate collections. The schema is configured correctly, but forming a relationship between `Todo` and  `User` documents will require an additional operation. This can be accomplished by updating a `Todo` document to include the `ObjectId` of a `User` in the `assignee` field. It's this step that establishes the direct connection between two documents.
+This field allows us to link documents in separate collections. The schema is configured correctly, but forming a relationship between `Todo` and  `User` documents will still require an additional operation. This can be accomplished by updating a `Todo` document to include the `ObjectId` of a `User` in the `assignee` field. It's this step that establishes the direct connection between two documents.
 
 ## Creating a new user
 
@@ -55,7 +55,7 @@ Run the `queries.js` file with the following command:
 node queries.js
 ```
 
-You should see the following output in your terminal:
+You should see the following output in your terminal (though your ObjectId will be different):
 
 ```plaintext
 New user: {
@@ -84,6 +84,8 @@ const assignTodo = async () => {
   console.log('Updated document:', updatedTodo);
 };
 ```
+
+To do this we'll use the `findByIdAndUpdate()` mongoose method, which takes three arguments - the first argument is the id of the document to look up, the second is an object with desired updates, and the third is for options (in this case, `new: true` specifies that the function should return the modified document rather than the original)
 
 > 🚨 Make sure that you replace `todoId` and `userId` with actual `ObjectIds` from your database.
 
