@@ -6,9 +6,8 @@ This module introduces students to the fundamentals of relationships in Mongoose
 
 ## Prerequisites
 
-- tktk
-- tktk
-- tktk
+- Intro to Mongoose
+
 
 ## Content
 
