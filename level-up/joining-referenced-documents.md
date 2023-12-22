@@ -1,10 +1,10 @@
 # ![Mongoose Relationships - Level Up - Joining Referenced Documents](./assets/hero.png)
 
-**Learning Objective:** By the end of this lesson, students will be retrieve referenced documents using the `populate()` method.
+**Learning Objective:** By the end of this lesson, students will be able to retrieve referenced documents using the `populate()` method.
 
 ## The `populate()` method
 
-With embedding, a parent document contains the related sub-documents, but with referencing, a document only contains the related document’s `ObjectId`. We can demonstrate this concept if we execute the `findTodos` function.
+With embedding, a parent document contains the related sub-documents, but with referencing, a document *only* contains the related document’s `ObjectId`. We can demonstrate this concept if we execute the `findTodos` function.
 
 At this point, you should see something like the following in your terminal:
 
@@ -23,7 +23,7 @@ All todos: [
 
 Our `todo` document contains a reference to a `user`, but not the actual data. While we could execute another database operation to retrieve the relevant `user` document, Mongoose provides a more streamlined approach with the [`populate()` method](https://mongoosejs.com/docs/populate.html#population). 
 
-The `populate()` method is used to automatically replace a specified path in a document with documents from other collections. It can be called on a query. The method can accept several arguments that specify how you want to join data from different collections. In its most straightforward implementation, `populate()` can accept a `string` specifying the path in the document that needs to be populated with data. 
+The `populate()` method is used to automatically replace a specified path in a document with documents from other collections. The method can accept several arguments that specify how you want to join data from different collections. In its most straightforward implementation, `populate()` accepts a `string` specifying the path in the document that needs to be populated with data. 
 
 Let's take a look at an example:
 
@@ -31,11 +31,11 @@ Let's take a look at an example:
 const todos = await Todo.find({}).populate("assignee");
 ```
 
-In the example above, `populate()` method is called on the `find()` operation. It specifies that the `ObjectId` held in the `assignee` field should be replaced with the corresponding `user` document. This will apply to all `todos` (assuming they have an active `assignee` field) returned by the `find()` operation.
+In the example above, the `populate()` method is called on a `find()` operation. It specifies that the `ObjectId` held in the `assignee` field should be replaced with the corresponding `user` document. This will apply to all `todos` (assuming they have an active `assignee` field) returned by the `find()` operation.
 
 ## Joining documents with `populate()`
 
-Let's user the `populate()` method to join our `todo` and `user` documents.
+Let's use the `populate()` method to join our `todo` and `user` documents.
 
 In `queries.js`, modify the `findTodos` function as shown below:
 
