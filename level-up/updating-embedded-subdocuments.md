@@ -78,7 +78,6 @@ Updated document: {
   subTasks: [
     {
       text: 'Learn how props work',
-      priorityLevel: 'High',
       isComplete: true,
       _id: new ObjectId('6580677cf30bfef697ae046f')
     }
