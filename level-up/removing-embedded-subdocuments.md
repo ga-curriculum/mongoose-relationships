@@ -1,6 +1,6 @@
 # ![Mongoose Relationships - Level Up - Removing Embedded Sub-documents](./assets/hero.png)
 
-**Learning Objective:** By the end of this lesson, students will be able to remove embedded sub-documents in Mongoose.
+**Learning Objective:** By the end of this lesson, students will be able to remove embedded subdocuments in Mongoose.
 
 ## Removing subdocuments
 

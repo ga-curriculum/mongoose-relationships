@@ -1,6 +1,6 @@
 # ![Mongoose Relationships - Embedding](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will embed subdocuments in Mongoose.
+**Learning objective:** By the end of this lesson, students will understand how to embed subdocuments in Mongoose.
 
 ## What is embedding?
 
@@ -35,9 +35,9 @@ Embedding connected data in a single document can reduce the number of read oper
 
 ## Embedding sub-documents
 
-Let's say we want to let users create sub-tasks under each Todo. For instance, if a user created a Todo called "Pack for Vacation", they could have associated sub-tasks like "Toothbrush", "Swimsuit", and "Laptop". 
+Let's say we want to let users create sub-tasks under each `Todo`. For instance, if a user created a `Todo` called "Pack for Vacation", they could have associated sub-tasks like "Toothbrush", "Swimsuit", and "Laptop". 
 
-Since this is a one-to-many relationship (each Todo can have multiple subtasks, but each subtask will only belong to a single Todo), it makes sense to embed sub-tasks inside of Todo. This will help reduce the number of read operations required to obtain our data. 
+Since this is a one-to-many relationship (each `Todo` can have multiple subtasks, but each subtask will only belong to a single `Todo`), it makes sense to embed sub-tasks inside of `Todo`. This will help reduce the number of read operations required to obtain our data. 
 
 First, let's create a new schema for our sub-tasks. They will need a `text` field and an `isComplete` field: 
 
@@ -46,7 +46,6 @@ const mongoose = require('mongoose');
 
 const subtaskSchema = mongoose.Schema({
   text: String,
-  priorityLevel: String,
   isComplete: Boolean
 })
 
@@ -73,7 +72,6 @@ const mongoose = require('mongoose');
 
 const subtaskSchema = mongoose.Schema({
   text: String,
-  priorityLevel: String,
   isComplete: Boolean
 })
 
@@ -104,7 +102,6 @@ const createSubtask = async () => {
 
   const subtaskData = {
     text: "Learn how props work",
-    priorityLevel: "High",
     isComplete: false,
   };
 
@@ -127,7 +124,6 @@ Modified todo: {
   subtasks: [
     {
       text: 'Learn how props work',
-      priorityLevel: 'High',
       isComplete: false,
       _id: new ObjectId('6580677cf30bfef697ae046f')
     }
