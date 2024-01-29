@@ -1,7 +1,5 @@
 # ![Mongoose Relationships - Setup](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to set up a basic Mongoose environment in a Node.js application.
-
 ## Setup
 
 Open your Terminal application and navigate to your `~/code/ga/lectures` directory:
