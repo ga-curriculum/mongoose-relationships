@@ -1,6 +1,6 @@
 # ![Mongoose Relationships - Level Up - Finding a Parent From the Child](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to find a parent document based on the properties of a child document using Mongoose.
+**Learning objective:** By the end of this lesson, students will be able to find a parent document based on specific properties of a child document using Mongoose.
 
 ## Finding a parent from a child
 
@@ -30,7 +30,7 @@ const subtask = todo.subtasks.find((subtask) => {
 
 ## Real-world scenario
 
-Consider an application where a user can see a list of all the subtasks in the database. The user wants to delete a specific subtask, but each document has been removed from the context of its parent. To achieve this functionality, we need to first find the correct parent document, and then find and remove the appropriate subtask within.
+Consider an application where a user can see a list of all the subtasks. The user wants to delete a specific subtask, but each document has been removed from the context of its parent. To achieve this functionality, we need to first find the correct parent document, and then find and remove the appropriate subtask within.
 
 Let's build out the relevant pieces now. Add the following to `queries.js`:
 
@@ -51,9 +51,9 @@ const findParentAndRemoveSubtask = async () => {
 };
 ```
 
-> 💡 The `deleteOne()` method is accessible on each subdocument.
+> 💡 The `deleteOne()` method is accessible on all mongoose subdocuments.
 
-Next, call upon `findParentAndRemoveSubtask` in the `runQueries` function:
+Next, call `findParentAndRemoveSubtask` in the `runQueries` function:
 
 ```javascript
 const runQueries = async () => {

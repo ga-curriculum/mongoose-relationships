@@ -1,6 +1,6 @@
 # ![Mongoose Relationships - Level Up - Updating Embedded Subdocuments](./assets/hero.png)
 
-**Learning Objective:** By the end of this lesson, students will be able to update embedded subdocuments in Mongoose.
+**Learning Objective:** By the end of this lesson, students will be able to update embedded subdocuments by `id` in Mongoose.
 
 ## Updating subdocuments
 
@@ -11,7 +11,7 @@ There are a few approaches to updating subdocuments in Mongoose. The most straig
 3. Modify the properties of the subdocument.
 4. Save the parent document to apply the changes.
 
-Here's an example of the process in action:
+Here's an example of this process in action:
 
 ```javascript
 // Find the parent:
@@ -20,11 +20,11 @@ const todo = await Todo.findById(todoId);
 // Locate the subdocument within the parent:
 const subTask = todo.subTasks.id(subTaskId);
 
-// Update the subdocument:
+// Update the subdocument by marking it complete
 subTask.isComplete = true;
 
 // Save the parent document to persist changes:
-await todo.save();       
+await todo.save();
 ```
 
 In the code snippet above, we modify the `isComplete` property of a subdocument like we would a typical JavaScript object. After updating the subdocument, calling `save()` on the parent ensures the changes are reflected in the database.
@@ -52,7 +52,7 @@ const updateSubtask = async () => {
 
 > 🚨 Make sure to replace `todoId` and `subtaskId` with actual `ObjectIds` from your database.
 
-Next, call upon `updateSubtask` within the `runQueries` function:
+Next, call `updateSubtask` with the `runQueries` function:
 
 ```javascript
 const runQueries = async () => {
@@ -67,7 +67,7 @@ Run the `queries.js` file with the following command:
 node queries.js
 ```
 
-You should see the following output in your terminal:
+You should see a similar output in your terminal:
 
 ```plaintext
 Updated document: {

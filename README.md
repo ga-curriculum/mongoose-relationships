@@ -8,28 +8,21 @@ This module introduces students to the fundamentals of relationships in Mongoose
 
 - Intro to Mongoose
 
-
 ## Content
 
 | Lesson | Video Time | Video | Skills |
 | ------ |:----------:|:-----:| ------ |
 | [Setup](./setup/README.md) | -- | -- | Setting up the development environment |
 | [Concepts](./concepts/README.md) | -- | -- | Understand how entities can be related in MongoDB |
-| [Embedding](./embedding/README.md) | -- | -- | Embedding subdocuments with Mongoose. |
-| **Total content**                                        | -- | -- |                     |
-
-## Level Up content
-
-| Lesson | Video Time | Video | Skills |
-| ------ |:----------:|:-----:| ------ |
-| [Referencing](./referencing/README.md) | -- | -- | Understanding the concept of referencing in MongoDB. |
-| [Adding References](./adding-references/README.md) | -- | -- | Saving references in Mongoose. |
-| [Joining Referenced Documents](./joining-referenced-documents/README.md) | -- | -- | Joining referenced documents using the `populate()` method. |
-| [Locating Embedded Subdocuments](./locating-embedded-subdocuments/README.md) | -- | -- | Approaches for locating embedded subdocuments in document arrays. |
-| [Removing Embedded Subdocuments](./removing-embedded-subdocuments/README.md) | -- | -- | Removing embedded subdocuments from document arrays. |
-| [Updating Embedded Subdocuments](./updating-embedded-subdocuments/README.md) | -- | -- | Updating specific subdocuments in document arrays. |
-| [Finding a Parent From the Child](./finding-a-parent-from-the-child/README.md) | -- | -- | Finding a parent document based on the properties of a child document. |
-| **Total Level Up content**                                          | -- | -- |                     |
+| [Embedding](./embedding/README.md) | -- | -- | Understand how to embed subdocuments in a Mongoose schema |
+| [Locating Embedded Subdocuments](./locating-embedded-subdocuments/README.md) | -- | -- | Retrieve embedded subdocuments using an `id` |
+| [Removing Embedded Subdocuments](./removing-embedded-subdocuments/README.md) | -- | -- | Remove embedded subdocuments by `id` |
+| [Updating Embedded Subdocuments](./updating-embedded-subdocuments/README.md) | -- | -- | Update embedded subdocuments by `id` |
+| [Finding a Parent From the Child](./finding-a-parent-from-the-child/README.md) | -- | -- | Finding a parent document based on the properties of a child |
+| [Referencing](./referencing/README.md) | -- | -- | Understand referencing related data in MongoDB |
+| [Adding References](./adding-references/README.md) | -- | -- | Create relationships through referenced documents |
+| [Joining Referenced Documents](./joining-referenced-documents/README.md) | -- | -- | Retrieve referenced documents using the `populate()` method |
+| **Total content**                                          | -- | -- |                     |
 
 ## References
 
@@ -39,7 +32,7 @@ This module introduces students to the fundamentals of relationships in Mongoose
 
 ✏️ [Instructor Guide](./internal-resources/instructor-guide.md)
 
-🎥 [Video Hub](./internal-resources/video-guide.md)
+🎥 [Video Hub](./internal-resources/video-hub.md)
 
 🏗️ [Release Notes](./internal-resources/release-notes.md)
 

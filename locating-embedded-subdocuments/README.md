@@ -1,6 +1,6 @@
 # ![Mongoose Relationships - Level Up - Locating Embedded Sub-documents](./assets/hero.png)
 
-**Learning Objective:** By the end of this lesson, students will be able to find embedded subdocuments in Mongoose.
+**Learning Objective:** By the end of this lesson, students will be able to retrieve embedded subdocuments using an `id` in Mongoose.
 
 ## The challenge with embedded documents
 
@@ -10,7 +10,7 @@ In order to perform database operations on a subdocument, developers must intera
 
 ## Finding a subdocument in a document array
 
-Before modifying or removing a subdocument, it's often necessary to find it within the parent document. Mongoose's subdocument arrays have an `id()` method that allows you to find a specific subdocument by its `_id`.
+Before modifying or removing a subdocument, you first have to find it within the parent document. Mongoose's subdocument arrays have an `id()` method that allows you to find a specific subdocument by its `_id`.
 
 Take a look at this example of the `id()` method using a `todo` and its `subtasks`:
 
@@ -55,7 +55,7 @@ Run the `queries.js` file with the following command:
 node queries.js
 ```
 
-You should see the following output in your terminal:
+You should see a similar output in your terminal:
 
 ```plaintext
 Subdocument: {
