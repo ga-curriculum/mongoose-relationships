@@ -14,7 +14,7 @@ This module introduces students to the fundamentals of relationships in Mongoose
 | Lesson | Video Time | Video | Skills |
 | ------ |:----------:|:-----:| ------ |
 | [Setup](./setup/README.md) | -- | -- | Setting up the development environment |
-| [Concepts](./concepts/README.md) | -- | -- | Learning how to model relationships in MongoDB. |
+| [Concepts](./concepts/README.md) | -- | -- | Understand how entities can be related in MongoDB |
 | [Embedding](./embedding/README.md) | -- | -- | Embedding subdocuments with Mongoose. |
 | **Total content**                                        | -- | -- |                     |
 

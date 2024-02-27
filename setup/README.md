@@ -18,7 +18,7 @@ cd mongoose-relationships
 Create a node project along with its `package.json` file by using this command:
 
 ```bash
-npm init
+npm init -y
 ```
 
 ## Install `mongoose` and `dotenv` from NPM
@@ -83,6 +83,7 @@ Add the following to your `.gitignore` file:
 
 ```plaintext
 .env
+node_modules
 ```
 
 ## Defining a model
