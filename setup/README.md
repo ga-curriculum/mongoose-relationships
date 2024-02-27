@@ -18,7 +18,7 @@ cd mongoose-relationships
 Create a node project along with its `package.json` file by using this command:
 
 ```bash
-npm init
+npm init -y
 ```
 
 ## Install `mongoose` and `dotenv` from NPM
@@ -37,7 +37,7 @@ First, create a `.env` file in your project's root directory:
 touch .env
 ```
 
-This file will be used to store any sensitive, secret information that our application needs to run, but that we don't want to commit to GitHub. Database connection strings definitely qualify: we don't want just anybody to be able to access our database using this string!
+This file will be used to store any sensitive, secret information that the application needs to run, but that we don't want to commit to GitHub. Database connection strings definitely qualify: we don't want just anybody to be able to access our database using this string!
 
 `.env` files are a simple list of key-value pairs defined like so:
 
@@ -46,28 +46,31 @@ SECRET_NUMBER=13
 PASSWORD=12345
 ```
 
-This will allow an application to access the `SECRET_NUMBER`, and `PASSWORD` properties on a `process.env` object.
+This will allow an application to access the `SECRET_NUMBER` and `PASSWORD` properties on a `process.env` object.
 
-You can now paste your MongoDB Atlas connection string in the app's `.env` file, assigning it to a `MONGODB_URI` environment variable. For example:
+Paste your MongoDB Atlas connection string in the app's `.env` file, assigning it to a `MONGODB_URI` environment variable. For example:
 
 ```plaintext
 MONGODB_URI=mongodb+srv://<username>:<password>@sei-w0kys.azure.mongodb.net/?retryWrites=true
 ```
 > Do not use the above connection string in your application, it will not work.
 
-It is important that there are no spaces between `MONGODB_URI`, `=`, and your atlas connection string. It should be written as one continuous string with no spaces.
+There must be no spaces between `MONGODB_URI`, `=`, and your atlas connection string. It should be written as one continuous string.
 
 This will make the connection string available in our application on the `process.env.MONGODB_URI` property.
 
-Your connection string will default to a generic unnamed database, as indicated by the /? towards the end of the connection string. However, you must update this to your preferred database name. In this application that will be todos. You can specify the preferred database name by adding it between the / and the ? in the connection string. Here's how that will look for this app: ``/todos?`. That will make the full connection string for this app look something like this:
+Your connection string will default to a generic unnamed database, as indicated by the `/?` towards the end of the connection string. However, you ***must*** update this to your preferred database name. 
+
+**In this application, that will be `todos`.**
+
+You can specify the preferred database name by adding it between the `/` and the `?` in the connection string. That will make the full connection string for this app look something like this:
 
 ```plaintext
 MONGODB_URI=mongodb+srv://<username>:<password>@sei-w0kys.azure.mongodb.net/todos?retryWrites=true
 ```
-
 > Again, do not use the above connection string in your application, it will not work.
 
-Anytime you need to make a new app you can use this same connection string and replace the database name portion of the string. Ensure the name you assign is unique to that project - for example, once we've used the name `todos` for this app, you shouldn't use it again. Also, ensure it doesn't contain any special characters.
+### This application builds on previous functionality for performing crud operations on a resource called `Todos`. 
 
 ## Add a `.gitignore`
 
@@ -83,11 +86,12 @@ Add the following to your `.gitignore` file:
 
 ```plaintext
 .env
+node_modules
 ```
 
 ## Defining a model
 
-Let's create that directory and a file to handle the `todos` resource:
+Let's create a models directory and a file to define the `todos` resource:
 
 ```bash
 mkdir models
@@ -124,7 +128,7 @@ Open the contents of the directory in VS Code:
 code .
 ```
 
-Make sure you have the following in `queries.js`:
+Add the following starter code to `queries.js`:
 
 ```javascript
 /*-------------------------------- Starter Code --------------------------------*/
@@ -169,3 +173,6 @@ const findTodos = async () => {
   console.log("All todos:", todos);
 };
 ```
+
+This code establishes a connection to MongoDB and provides two functions to ***create*** and ***read***  `todo` resources in our database.
+In this lesson we will build on that functionality, by adding additional data and showing how to create a relationship between the new data and the existing `todo` resource.

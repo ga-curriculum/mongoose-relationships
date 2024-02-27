@@ -1,10 +1,10 @@
 # ![Mongoose Relationships - Level Up - Adding References](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to update documents with references in Mongoose.
+**Learning objective:** By the end of this lesson, students will be able to create relationships through referenced documents in MongoDB.
 
 ## Forming relationships through referencing
 
-Our `todoSchema` includes an `assignee` field, which is a reference to a `User`:
+Our `todoSchema` includes an `assignee` field, which holds a reference to a `User`:
 
 ```javascript
 // models/todo.js
@@ -15,7 +15,7 @@ const todoSchema = mongoose.Schema({
 });
 ```
 
-This field allows us to link documents in separate collections. The schema is configured correctly, but forming a relationship between `Todo` and  `User` documents will still require an additional operation. This can be accomplished by updating a `Todo` document to include the `ObjectId` of a `User` in the `assignee` field. It's this step that establishes the direct connection between two documents.
+This field allows us to link documents in separate collections. The schema is complete, but forming a relationship between `Todo` and  `User` documents will still require an additional operation. We still need to **update** the `Todo` document to include the `ObjectId` of a `User` in the `assignee` field. It's this step that establishes the direct connection between two documents.
 
 ## Creating a new user
 
@@ -40,7 +40,7 @@ const createUser = async () => {
 };
 ```
 
-Next, call upon `createUser` within the `runQueries` function:
+Next, call `createUser` with the `runQueries` function:
 
 ```javascript
 const runQueries = async () => {
@@ -55,7 +55,7 @@ Run the `queries.js` file with the following command:
 node queries.js
 ```
 
-You should see the following output in your terminal (though your ObjectId will be different):
+You should see a similar output in your terminal:
 
 ```plaintext
 New user: {
@@ -68,7 +68,14 @@ New user: {
 
 ## Add a reference
 
-With our user added, let's build a function to form the relationship between a `todo` and a `user`.
+Now that we have a `user`, let's build a function to form the relationship between `user` and a `todo`.
+
+To do this we'll use the `findByIdAndUpdate()` mongoose method, which takes three arguments:
+ - the first argument is the `id` of the document to look up, 
+ - the second is an object with desired updates
+ - the third is for options (in this case, `new: true` specifies that the function should return the modified document rather than the original)
+
+Create the following function in `queries.js`:
 
 ```javascript
 const assignTodo = async () => {
@@ -84,8 +91,6 @@ const assignTodo = async () => {
   console.log('Updated document:', updatedTodo);
 };
 ```
-
-To do this we'll use the `findByIdAndUpdate()` mongoose method, which takes three arguments - the first argument is the id of the document to look up, the second is an object with desired updates, and the third is for options (in this case, `new: true` specifies that the function should return the modified document rather than the original)
 
 > 🚨 Make sure that you replace `todoId` and `userId` with actual `ObjectIds` from your database.
 
@@ -104,7 +109,7 @@ Run the `queries.js` file with the following command:
 node queries.js
 ```
 
-You should see the following output in your terminal:
+You should see a similar output in your terminal:
 
 ```plaintext
 Updated document: {

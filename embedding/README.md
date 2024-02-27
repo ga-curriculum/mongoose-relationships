@@ -1,6 +1,6 @@
 # ![Mongoose Relationships - Embedding](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will understand how to embed subdocuments in Mongoose.
+**Learning objective:** By the end of this lesson, students will understand how to embed subdocuments in a Mongoose schema.
 
 ## What is embedding?
 
@@ -27,23 +27,43 @@ Here’s an example of what a document with embedded data looks like (assume a d
 }
 ```
 
-> 💡 A sub-document is a document nested within another document. Sub-documents are very similar to regular documents - the difference is that they are not saved directly, but instead when the document they are embedded within is saved. 
+This document represents **one** record in a MongoDB database. It shows a primary document for an individual named "Joe Smith," identified by a unique `_id`. Embedded within this document is an array named `contacts`, containing sub-documents for different types of contact information.
+
+Each contact entry is a sub-document with its own `_id`, indicating that it is a distinct entity within the array. There are two types of contact information provided for Joe Smith:
+
+- A mobile number: (555) 555-5555
+- An email address: joe@smith.com
+
+Notice that each contact object has a set of properties that are not the same as the parent object.
+
+```js
+{
+  _id: ObjectId("5099803df3f4948bd2e98fff"),
+  type: "mobile",
+  contact: "(555) 555-5555"
+}
+```
+
+This means that subdocuments, in this case contacts, will have their own unique schema. 
+
+> 💡 A sub-document is a document nested within another document. Sub-documents are very similar to regular documents - the difference is that they are not saved individually, but as a group when the parent object is saved.
 
 ## Why use embedding
 
 Embedding connected data in a single document can reduce the number of read operations required to obtain data. In general, you should structure your schema so your application receives all of its required information in a single read operation.
 
-## Embedding sub-documents
+## Embedding sub-documents for `Todos`
 
-Let's say we want to let users create sub-tasks under each `Todo`. For instance, if a user created a `Todo` called "Pack for Vacation", they could have associated sub-tasks like "Toothbrush", "Swimsuit", and "Laptop". 
+Let's say we want to let users create sub-tasks under each `Todo` in our application. For instance, if a user created a `Todo` called "Pack for Vacation", they could have associated sub-tasks like "Toothbrush", "Swimsuit", and "Laptop". 
 
-Since this is a one-to-many relationship (each `Todo` can have multiple subtasks, but each subtask will only belong to a single `Todo`), it makes sense to embed sub-tasks inside of `Todo`. This will help reduce the number of read operations required to obtain our data. 
+In this scenario, we have a one-to-many relationship where each `Todo` can include multiple items, but each item is specific to only one `Todo`. Therefore, it's logical to embed these items directly within the `Todo`. This approach is more organized, making it easier to manage and access the items associated with each `Todo`. This will help reduce the number of read operations required to obtain our data. 
 
-First, let's create a new schema for our sub-tasks. They will need a `text` field and an `isComplete` field: 
+First, we'll create a new schema for our sub-tasks. They will need a `text` field and an `isComplete` field: 
 
 ```js
 const mongoose = require('mongoose');
 
+// new
 const subtaskSchema = mongoose.Schema({
   text: String,
   isComplete: Boolean
@@ -59,13 +79,14 @@ const Todo = mongoose.model('Todo', todoSchema);
 module.exports = Todo;
 ```
 
-> 💡 Sub-documents have their own **schema**, but since sub-documents are not saved to a collection, we **do not compile a sub-document’s schema into a Model**.
+> 💡 Sub-documents have their own **schema**, but since sub-documents are not saved to their own collection, we **do not compile a sub-document’s schema into a Model**.
 
-Great, we now have two schemas. The next step is to give them a relationship, as they are currently not associated at all. 
+Now that we have two schemas, the next step is to give them a relationship.
 
-To do so, we nest our `subtaskSchema` in our `todoSchema`.
+To associate this data, we nest our `subtaskSchema` in our `todoSchema`.
 
-Mongoose represents an array of sub-documents as an embedded schema wrapped in square brackets (`[schema]`). This indicates that subTasks will be an array whose elements conform to the `subtaskSchema`. 
+Mongoose represents an array of sub-documents as an embedded schema wrapped in square brackets `[schema]`. 
+This indicates that subTasks will be an array whose elements conform to the `subtaskSchema`. 
 
 ```js
 const mongoose = require('mongoose');
@@ -78,7 +99,7 @@ const subtaskSchema = mongoose.Schema({
 const todoSchema = mongoose.Schema({
   text: String,
   isComplete: Boolean,
-  subtasks: [subtaskSchema]
+  subtasks: [subtaskSchema] // embedded subtask schema
 });
 
 const Todo = mongoose.model('Todo', todoSchema);
@@ -90,7 +111,7 @@ module.exports = Todo;
 
 ## Adding a `subtask`
 
-Add the following to bottom of `server.js`, under our existing query files: 
+Let's create a new function for creating subtasks at the bottom of `queries.js`, under our existing functions: 
 
 ```js
 const createSubtask = async () => {
@@ -113,7 +134,18 @@ const createSubtask = async () => {
 };
 ```
 
-Call the `createSubtask` function and review the `todo` in the console.log. You should see an embedded sub-document in the `todo.subtask` array.
+Test your new `createSubtask` function and review the `todo` logged to the console. 
+
+```js
+// queries.js
+
+const runQueries = async () => {
+  console.log('Queries running.');
+  await createSubtask();
+};
+```
+
+You should see an embedded sub-document in the `todo.subtasks` array.
 
 ```plaintext
 Modified todo: {

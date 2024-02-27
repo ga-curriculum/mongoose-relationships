@@ -4,9 +4,9 @@
 
 ## The `populate()` method
 
-With embedding, a parent document contains the related sub-documents, but with referencing, a document *only* contains the related document’s `ObjectId`. We can demonstrate this concept if we execute the `findTodos` function.
+With embedding, a parent document ***contains*** the related sub-documents, but with referencing, a document *only* contains the related document’s `ObjectId`. We can demonstrate this concept if we execute the `findTodos` function.
 
-At this point, you should see something like the following in your terminal:
+When you run `findTodos()` you should see something like this in your terminal:
 
 ```plaintext
 All todos: [
@@ -21,9 +21,11 @@ All todos: [
 ]
 ```
 
-Our `todo` document contains a reference to a `user`, but not the actual data. While we could execute another database operation to retrieve the relevant `user` document, Mongoose provides a more streamlined approach with the [`populate()` method](https://mongoosejs.com/docs/populate.html#population). 
+Our `todo` document contains a reference to a `user`, but not the actual data. While we could execute another database operation to retrieve the relevant `user` document, Mongoose provides a more streamlined approach with the [`populate()`](https://mongoosejs.com/docs/populate.html#population). method.
 
-The `populate()` method is used to automatically replace a specified path in a document with documents from other collections. The method can accept several arguments that specify how you want to join data from different collections. In its most straightforward implementation, `populate()` accepts a `string` specifying the path in the document that needs to be populated with data. 
+In Mongoose, the `populate()` method is a powerful tool that allows you to automatically replace references in a document with the actual data from other collections. Essentially, it can be used to "join" data from different collections in a single query. In its most straightforward implementation, `populate()` accepts a `string` specifying the path in the document that needs to be populated with data. 
+
+When you use `populate()`, it looks for the user reference in your `todo` document and then fetches the corresponding user data from the `users` collection. It replaces the reference with the actual user data, so you get a combined document.
 
 Let's take a look at an example:
 
