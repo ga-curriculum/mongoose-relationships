@@ -14,15 +14,15 @@ Referencing differs from embedding in a few key ways. With embedding, a parent d
 
 ## Deciding which document should hold the reference
 
-When using Mongoose to reference data in MongoDB, you have the ability to store the reference (`ObjectId`) in either of the two related documents, or even both. This decision depends upon the design and functionality of your application, and it’s not always clear which is best.
+When using Mongoose to reference data in MongoDB, you can store the reference (`ObjectId`) in either of the two related documents or even both. This decision depends upon the design and functionality of your application, and it’s not always clear which is best.
 
-In a typical **one-to-many relationships**, it's common for the **many** side (`Todo`) to hold the reference to the **one** side (`User`). This approach is practical because it's more efficient to store a single reference in many documents, rather than storing countless references in a single document.
+In a typical **one-to-many relationship**, it's common for the **many** side (`Todo`) to hold the reference to the **one** side (`User`). This approach is practical because it's more efficient to store a single reference in many documents, rather than storing countless references in a single document.
 
 However, certain scenarios might call for the opposite approach, where the `User` document holds an array of references to the associated `Todo` documents. For example, if your application frequently retrieves a user along with all their assigned tasks, this inverse referencing could be beneficial. Mongoose is versatile enough to support both approaches.
 
 ## Why choose referencing over embedding?
 
-While embedding can be more efficient for read operations, referencing has its own advantages. 
+While embedding can be more efficient for read operations, referencing has its advantages. 
 
 Referencing may be beneficial if: 
 

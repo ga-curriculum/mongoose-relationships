@@ -68,7 +68,7 @@ New user: {
 
 ## Add a reference
 
-With our user added, let's build a function to form the relationship between a `todo` and a `user`.
+Now that we have a `user`, let's build a function to form the relationship between `user` and a `todo`.
 
 To do this we'll use the `findByIdAndUpdate()` mongoose method, which takes three arguments:
  - the first argument is the `id` of the document to look up, 

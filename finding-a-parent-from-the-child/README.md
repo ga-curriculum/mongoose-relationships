@@ -4,7 +4,7 @@
 
 ## Finding a parent from a child
 
-Imagine you need to find a parent document, but your starting point is a property held within one of its child documents. Thankfully, Mongoose query methods are sophisticated enough to filter results based on properties of subdocuments.
+Imagine you need to find a parent document, but your starting point is a property held within one of its child documents. Thankfully, Mongoose query methods are sophisticated enough to filter results based on the properties of subdocuments.
 
 Let's see an example using the `findOne()` method:
 

@@ -25,7 +25,7 @@ Our `todo` document contains a reference to a `user`, but not the actual data. W
 
 In Mongoose, the `populate()` method is a powerful tool that allows you to automatically replace references in a document with the actual data from other collections. Essentially, it can be used to "join" data from different collections in a single query. In its most straightforward implementation, `populate()` accepts a `string` specifying the path in the document that needs to be populated with data. 
 
-When you use `populate()`, it looks for the user reference in your todo document and then fetches the corresponding user data from the users collection. It replaces the reference with the actual user data, so you get a combined document.
+When you use `populate()`, it looks for the user reference in your `todo` document and then fetches the corresponding user data from the `users` collection. It replaces the reference with the actual user data, so you get a combined document.
 
 Let's take a look at an example:
 
