@@ -104,7 +104,7 @@ Add the following to `models/todo.js`:
 // models/todo.js
 const mongoose = require('mongoose');
 
-const todoSchema = mongoose.Schema({
+const todoSchema = new mongoose.Schema({
   text: String,
   isComplete: Boolean,
 });

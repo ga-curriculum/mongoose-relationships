@@ -8,7 +8,7 @@ Our `todoSchema` includes an `assignee` field, which holds a reference to a `Use
 
 ```javascript
 // models/todo.js
-const todoSchema = mongoose.Schema({
+const todoSchema = new mongoose.Schema({
   text: String,
   isComplete: Boolean,
   assignee: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }

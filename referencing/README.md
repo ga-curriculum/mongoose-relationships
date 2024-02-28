@@ -46,12 +46,12 @@ This property will store a reference to the `User` model:
 const mongoose = require('mongoose');
 
 // Embedded data schema
-const subtaskSchema = mongoose.Schema({
+const subtaskSchema = new mongoose.Schema({
   text: String,
   isComplete: Boolean
 })
 
-const todoSchema = mongoose.Schema({
+const todoSchema = new mongoose.Schema({
   text: String,
   isComplete: Boolean,
   // subtasks: [subtaskSchema]
@@ -84,7 +84,7 @@ In `models/user.js`, we'll define the `userSchema`, compile it into a model, and
 const mongoose = require('mongoose');
 
 // Define the User schema
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: String,
   email: String,
 });

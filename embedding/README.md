@@ -64,12 +64,12 @@ First, we'll create a new schema for our sub-tasks. They will need a `text` fiel
 const mongoose = require('mongoose');
 
 // new
-const subtaskSchema = mongoose.Schema({
+const subtaskSchema = new mongoose.Schema({
   text: String,
   isComplete: Boolean
 })
 
-const todoSchema = mongoose.Schema({
+const todoSchema = new mongoose.Schema({
   text: String,
   isComplete: Boolean,
 });
@@ -91,12 +91,12 @@ This indicates that subTasks will be an array whose elements conform to the `sub
 ```js
 const mongoose = require('mongoose');
 
-const subtaskSchema = mongoose.Schema({
+const subtaskSchema = new mongoose.Schema({
   text: String,
   isComplete: Boolean
 })
 
-const todoSchema = mongoose.Schema({
+const todoSchema = new mongoose.Schema({
   text: String,
   isComplete: Boolean,
   subtasks: [subtaskSchema] // embedded subtask schema
