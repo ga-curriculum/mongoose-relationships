@@ -30,14 +30,13 @@ Referencing may be beneficial if:
   
 - Multiple parent documents need access to the same child document and that child’s data changes frequently. For example, a document modeling a *bank account* should be referenced because it could be “owned” by more than one individual. Suppose the account data were embedded in two or more parent documents. Can you imagine how difficult it would be to keep the transactional & balance data in sync?
   
-- Say you wanted to view all *posts* on a landing page, regardless of the user who posted them, it would take more effort to extract the *posts* from each user if they were embedded. However, it would be quick to get all *posts* from their own collection.
+- Say you wanted to view all *posts* on a landing page, regardless of the user who posted them, it would take more effort to extract the *posts* from each user if they were embedded. However, it would be quick to get *all posts* from their own collection.
 
 ## Implementing references
 
-Let's implement an example of referencing using two models: `Todo` and `User`. Our goal is to build a **one-to-many (1:M) relationship** between the two.
+In this section, we'll explore how to implement references between two models: `Todo` and `User`. Our goal is to establish a `one-to-many (1:M)` relationship where a single `User` can be associated with multiple `Todo` items.
 
-First, we'll update the `todoSchema`, so that it includes an `assignee` property on the `Todo` model. For now you can comment out the embedded subtasks reference. We will not need them while we demo referencing.
-t
+In this updated `todoSchema`, we've added an `assignee` field. This field is structured to hold an ObjectId, which is a unique identifier for MongoDB documents. The `ref` attribute indicates that this ObjectId references documents from the `User` model.
 
 This property will store a reference to the `User` model:
 
@@ -57,16 +56,22 @@ const todoSchema = mongoose.Schema({
   isComplete: Boolean,
   // subtasks: [subtaskSchema]
 
-  // NEW reference to a User:
-  assignee: { type: mongoose.Schema.Types.ObjectId, ref: 'User' } 
+  // Add a new field to reference a User:
+  assignee: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User' // Reference to the User model
+  }
 });
 
 const Todo = mongoose.model('Todo', todoSchema);
 
 module.exports = Todo;
 ```
+> Note: we previously worked with embedded subtasks in the `Todo` model. For this particular lesson on referencing, we won't be needing these subtasks. Feel free to comment out the subtask-related code. This will help keep our focus on referencing without deleting the work you've already done on embedding.
+
 
 Next, let's create a new file to store our `User` model:
+
 ```bash
 touch models/user.js
 ```
@@ -75,6 +80,7 @@ In `models/user.js`, we'll define the `userSchema`, compile it into a model, and
 
 ```javascript
 // models/user.js
+
 const mongoose = require('mongoose');
 
 // Define the User schema
