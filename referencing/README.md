@@ -38,9 +38,6 @@ In this section, we'll explore how to implement references between two models: `
 
 In this updated `todoSchema`, we've added an `assignee` field. This field is structured to hold an ObjectId, which is a unique identifier for MongoDB documents. The `ref` attribute indicates that this ObjectId references documents from the `User` model.
 
-Here's how to update your `Todo` model:
-
-
 This property will store a reference to the `User` model:
 
 ```javascript
