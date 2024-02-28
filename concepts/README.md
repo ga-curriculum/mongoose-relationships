@@ -41,21 +41,18 @@ An ERD (entity relationship diagram) is a flowchart that visually illustrates th
 
 When diagramming a MongoDB database, data entities are the collections of documents. In other words, we need to account for all of the models and schemas that we will be working with. 
 
-When creating an ERD, we first need to identify the data entities that are involved. We would draw them as rectangles, and label them as nouns - for example: `User`, `Profile`, etc. 
+When creating an ERD, we first need to identify the data entities that are involved. We would draw them as rectangles, and label them as nouns - for example: `User`, `Fruit`, etc. 
 
-[tktk ERD example with a few collections drawn out, sans relationships (should have fields)]
+![Entities](./assets/entities.png)
 
 The next step is to determine how the entities are related. Then draw lines between associated fields to show a relationship.
 
-For example, if `Review` is an embedded schema on a `Post` model, we would draw a line between the `Review` field of our Post model and the `_id` field on our Review model. As expected, not all entities will be related.
+For example, if `reviewSchema` is an embedded schema on a `Post` model, we would draw a line between the `reviews` field of our Post model and the `_id` field on our Review model. As expected, not all entities will be related.
 
-[tktk ERD example with lines drawn between collections logically (no cardinality yet)]
+![Logical connections](./assets/logical-connections.png)
 
 Finally, we need to indicate the type of relationship that these lines represent. In other words, we need to show their cardinality. There are multiple ways to demonstrate this, the simplest is to just have `one` be an undecorated line, and `many` have an endpoint that is a tree or a fork.
 
-<img src="./assets/cardinality.png">
+![Cardinalities](./assets/cardinality.png)
 
-[tktk this example, but probably don't need examples of zero]
-
-
-[tktk simple ERD with all three forms of cardinality combinations]
+![Three relationships](./assets/three-relationships.png)

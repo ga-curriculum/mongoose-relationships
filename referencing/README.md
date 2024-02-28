@@ -8,7 +8,7 @@ Referencing is an alternate approach to creating relationships between data enti
 
 Referencing differs from embedding in a few key ways. With embedding, a parent document ***contains the sub-documents***, whereas with referencing a document ***only contains the related document’s `ObjectId`***. Whenever a document needs to access information on the document that it references, it can utilize the referenced `ObjectId` to locate the appropriate document in a separate collection.
 
-![tktk Hunter - example of referencing(erd or documents)](./assets/referencing.png)
+![Referencing example](./assets/referencing.png)
 
 > 💡 Both embedding and referencing can be used simultaneously in the same document.
 
