@@ -8,7 +8,7 @@ Referencing is an alternate approach to creating relationships between data enti
 
 Referencing differs from embedding in a few key ways. With embedding, a parent document ***contains the sub-documents***, whereas with referencing a document ***only contains the related document’s `ObjectId`***. Whenever a document needs to access information on the document that it references, it can utilize the referenced `ObjectId` to locate the appropriate document in a separate collection.
 
-![tktk Hunter - example of referencing(erd or documents)](./assets/referencing.png)
+![Referencing example](./assets/referencing.png)
 
 > 💡 Both embedding and referencing can be used simultaneously in the same document.
 
@@ -37,7 +37,7 @@ Referencing may be beneficial if:
 Let's implement an example of referencing using two models: `Todo` and `User`. Our goal is to build a **one-to-many (1:M) relationship** between the two.
 
 First, we'll update the `todoSchema`, so that it includes an `assignee` property on the `Todo` model. For now you can comment out the embedded subtasks reference. We will not need them while we demo referencing.
-
+t
 
 This property will store a reference to the `User` model:
 

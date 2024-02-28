@@ -1,4 +1,4 @@
-# ![Mongoose Relationships](../assets/tktk-hero.png)
+# ![Mongoose Relationships](../assets/hero.png)
 
 ## About
 
