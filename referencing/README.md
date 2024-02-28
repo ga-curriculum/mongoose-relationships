@@ -8,7 +8,7 @@ Referencing is an alternate approach to creating relationships between data enti
 
 Referencing differs from embedding in a few key ways. With embedding, a parent document ***contains the sub-documents***, whereas with referencing a document ***only contains the related document’s `ObjectId`***. Whenever a document needs to access information on the document that it references, it can utilize the referenced `ObjectId` to locate the appropriate document in a separate collection.
 
-# ![tktk Hunter - example of referencing(erd or documents)](./assets/referencing.png)
+![tktk Hunter - example of referencing(erd or documents)](./assets/referencing.png)
 
 > 💡 Both embedding and referencing can be used simultaneously in the same document.
 
@@ -36,21 +36,33 @@ Referencing may be beneficial if:
 
 Let's implement an example of referencing using two models: `Todo` and `User`. Our goal is to build a **one-to-many (1:M) relationship** between the two.
 
-First, we'll update the `todoSchema`, so that it includes an `assignee` property. This property will store a reference to the `User` model:
+First, we'll update the `todoSchema`, so that it includes an `assignee` property on the `Todo` model. For now you can comment out the embedded subtasks reference. We will not need them while we demo referencing.
+
+
+This property will store a reference to the `User` model:
 
 ```javascript
 // models/todo.js
+
 const mongoose = require('mongoose');
+
+// Embedded data schema
+const subtaskSchema = mongoose.Schema({
+  text: String,
+  isComplete: Boolean
+})
 
 const todoSchema = mongoose.Schema({
   text: String,
   isComplete: Boolean,
-  
-  // Reference to a User:
+  // subtasks: [subtaskSchema]
+
+  // NEW reference to a User:
   assignee: { type: mongoose.Schema.Types.ObjectId, ref: 'User' } 
 });
 
 const Todo = mongoose.model('Todo', todoSchema);
+
 module.exports = Todo;
 ```
 
