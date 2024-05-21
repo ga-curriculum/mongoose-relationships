@@ -131,7 +131,7 @@ touch queries.js
 Add the following starter code to `queries.js`:
 
 ```javascript
-/*------------------------------- Imports -----------------------------------*/
+/*------------------------------ Starter Code ------------------------------*/
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -139,7 +139,19 @@ dotenv.config();
 const mongoose = require('mongoose');
 const Todo = require('./models/todo.js');
 
-/*---------------------------- Query Functions ------------------------------*/
+const connect = async () => {
+  await mongoose.connect(process.env.MONGODB_URI);
+  console.log('Connected to MongoDB');
+  await runQueries()
+
+  await mongoose.disconnect();
+  console.log('Disconnected from MongoDB');
+  process.exit();
+};
+
+connect()
+
+/*----------------------------- Query Functions -----------------------------*/
 
 const createTodo = async () => {
   const todoData = {
@@ -155,26 +167,12 @@ const findTodos = async () => {
   console.log("All todos:", todos);
 };
 
-/*------------------------------ Query Runner -------------------------------*/
+/*------------------------------- Run Queries -------------------------------*/
 
 const runQueries = async () => {
   console.log('Queries running.');
   await createTodo();
 };
-
-/*--------------------------- Mongoose Connection ---------------------------*/
-
-const connect = async () => {
-  await mongoose.connect(process.env.MONGODB_URI);
-  console.log('Connected to MongoDB');
-  await runQueries()
-
-  await mongoose.disconnect();
-  console.log('Disconnected from MongoDB');
-  process.exit();
-};
-
-connect()
 ```
 
 This code establishes a connection to MongoDB and provides two functions to ***create*** and ***read*** `todo` resources in our database.
