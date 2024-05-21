@@ -21,6 +21,12 @@ Create a node project along with its `package.json` file by using this command:
 npm init -y
 ```
 
+Open the contents of the directory in VS Code:
+
+```bash
+code .
+```
+
 ## Install `mongoose` and `dotenv` from NPM
 
 To use mongoose in our application, we'll first need to install the `mongoose` and `dotenv` packages from NPM:
@@ -122,12 +128,6 @@ Create a `queries.js` file. We'll use this file to execute various Mongoose oper
 touch queries.js
 ```
 
-Open the contents of the directory in VS Code:
-
-```bash
-code .
-```
-
 Add the following starter code to `queries.js`:
 
 ```javascript
@@ -140,14 +140,13 @@ const mongoose = require('mongoose');
 const Todo = require('./models/todo.js');
 
 const connect = async () => {
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log('Connected to MongoDB');
-    await runQueries()
+  await mongoose.connect(process.env.MONGODB_URI);
+  console.log('Connected to MongoDB');
+  await runQueries()
 
-    await mongoose.disconnect();
-    console.log('Disconnected from MongoDB');
-    process.exit();
-  }
+  await mongoose.disconnect();
+  console.log('Disconnected from MongoDB');
+  process.exit();
 };
 
 connect()
