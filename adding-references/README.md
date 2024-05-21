@@ -27,7 +27,7 @@ Import the `User` model in `queries.js`:
 const User  = require('./models/user.js')
 ```
 
-Add the following function to `queries.js`:
+Add the following function to `queries.js` at the bottom of the **Query Functions** section:
 
 ```javascript
 const createUser = async () => {
@@ -75,7 +75,7 @@ To do this we'll use the `findByIdAndUpdate()` mongoose method, which takes thre
  - the second is an object with desired updates
  - the third is for options (in this case, `new: true` specifies that the function should return the modified document rather than the original)
 
-Create the following function in `queries.js`:
+Create the following function in `queries.js` at the bottom of the **Query Functions** section:
 
 ```javascript
 const assignTodo = async () => {

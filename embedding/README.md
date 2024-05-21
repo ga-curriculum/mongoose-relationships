@@ -111,7 +111,7 @@ module.exports = Todo;
 
 ## Adding a `subtask`
 
-Let's create a new function for creating subtasks at the bottom of `queries.js`, under our existing functions: 
+Let's create a new function for creating subtasks at the bottom of the **Query Functions** section in the `queries.js` file, under our existing functions: 
 
 ```js
 const createSubtask = async () => {

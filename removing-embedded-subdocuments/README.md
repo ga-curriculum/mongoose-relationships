@@ -19,7 +19,7 @@ await todo.save();
 
 ## Implementing a Delete Operation
 
-Let's build out a function to remove a specific `subtask`. Add the following function to `queries.js`:
+Let's build out a function to remove a specific `subtask`. Add the following function to `queries.js` at the bottom of the **Query Functions** section:
 
 ```javascript
 const removeSubtask = async () => {

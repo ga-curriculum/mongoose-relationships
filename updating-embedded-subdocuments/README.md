@@ -33,7 +33,7 @@ In the code snippet above, we modify the `isComplete` property of a subdocument 
 
 To demonstrate the process in more detail, let's create a function to update a subdocument.
 
-Add the following function to `queries.js`:
+Add the following function to `queries.js` at the bottom of the **Query Functions** section:
 
 ```javascript
 const updateSubtask = async () => {

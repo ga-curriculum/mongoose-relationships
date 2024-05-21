@@ -24,7 +24,7 @@ Once you have retrieved the specific subdocument, you can perform various operat
 
 ## Implementing the `id()` method
 
-Let's create a function to demonstrate finding a subdocument in an array. Add the following to `queries.js`:
+Let's create a function to demonstrate finding a subdocument in an array. Add the following to `queries.js` at the bottom of the **Query Functions** section:
 
 ```javascript
 const findSubtask = async () => {

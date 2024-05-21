@@ -32,7 +32,7 @@ const subtask = todo.subtasks.find((subtask) => {
 
 Consider an application where a user can see a list of all the subtasks. The user wants to delete a specific subtask, but each document has been removed from the context of its parent. To achieve this functionality, we need to first find the correct parent document, and then find and remove the appropriate subtask within.
 
-Let's build out the relevant pieces now. Add the following to `queries.js`:
+Let's build out the relevant pieces now. Add the following to `queries.js` at the bottom of the **Query Functions** section:
 
 ```javascript
 const findParentAndRemoveSubtask = async () => {
