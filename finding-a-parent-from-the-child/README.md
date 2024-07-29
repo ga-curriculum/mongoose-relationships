@@ -41,7 +41,7 @@ const findParentAndRemoveSubtask = async () => {
   });
 
   const subtask = todo.subtasks.find((subTask) => {
-    return subtask.text === 'Learn how props work'
+    return subTask.text === 'Learn how props work'
   });
 
   subtask.deleteOne();
