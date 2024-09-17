@@ -18,10 +18,10 @@ Here's an example of this process in action:
 const todo = await Todo.findById(todoId);
 
 // Locate the subdocument within the parent:
-const subTask = todo.subTasks.id(subTaskId);
+const subtask = todo.subtasks.id(subtaskId);
 
 // Update the subdocument by marking it complete
-subTask.isComplete = true;
+subtask.isComplete = true;
 
 // Save the parent document to persist changes:
 await todo.save();
@@ -75,7 +75,7 @@ Updated document: {
   text: 'Learn React',
   isComplete: false,
   __v: 1,
-  subTasks: [
+  subtasks: [
     {
       text: 'Learn how props work',
       isComplete: true,

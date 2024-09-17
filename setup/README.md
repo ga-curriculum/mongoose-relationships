@@ -59,13 +59,14 @@ Paste your MongoDB Atlas connection string in the app's `.env` file, assigning i
 ```plaintext
 MONGODB_URI=mongodb+srv://<username>:<password>@sei-w0kys.azure.mongodb.net/?retryWrites=true
 ```
-> Do not use the above connection string in your application, it will not work.
+
+> 🚨 Do not use the above connection string in your application, it will not work.
 
 There must be no spaces between `MONGODB_URI`, `=`, and your atlas connection string. It should be written as one continuous string.
 
 This will make the connection string available in our application on the `process.env.MONGODB_URI` property.
 
-Your connection string will default to a generic unnamed database, as indicated by the `/?` towards the end of the connection string. However, you ***must*** update this to your preferred database name. 
+Your connection string will default to a generic unnamed database, as indicated by the `/?` towards the end of the connection string. However, you ***must*** update this to your preferred database name.
 
 **In this application, that will be `todos`.**
 
@@ -74,9 +75,10 @@ You can specify the preferred database name by adding it between the `/` and the
 ```plaintext
 MONGODB_URI=mongodb+srv://<username>:<password>@sei-w0kys.azure.mongodb.net/todos?retryWrites=true
 ```
-> Again, do not use the above connection string in your application, it will not work.
 
-### This application builds on previous functionality for performing crud operations on a resource called `Todos`. 
+> 🚨 Again, do not use the above connection string in your application, it will not work.
+
+### This application builds on previous functionality for performing CRUD operations on a resource called `Todos`.
 
 ## Add a `.gitignore`
 

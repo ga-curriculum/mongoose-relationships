@@ -15,7 +15,7 @@ All todos: [
     text: 'Learn React',
     isComplete: false,
     __v: 6,
-    subTasks: [],
+    subtasks: [],
     assignee: new ObjectId('6581d503b8b46a5314295d66')
   }
 ]
@@ -23,7 +23,7 @@ All todos: [
 
 Our `todo` document contains a reference to a `user`, but not the actual data. While we could execute another database operation to retrieve the relevant `user` document, Mongoose provides a more streamlined approach with the [`populate()`](https://mongoosejs.com/docs/populate.html#population). method.
 
-In Mongoose, the `populate()` method is a powerful tool that allows you to automatically replace references in a document with the actual data from other collections. Essentially, it can be used to "join" data from different collections in a single query. In its most straightforward implementation, `populate()` accepts a `string` specifying the path in the document that needs to be populated with data. 
+In Mongoose, the `populate()` method is a powerful tool that allows you to automatically replace references in a document with the actual data from other collections. Essentially, it can be used to "join" data from different collections in a single query. In its most straightforward implementation, `populate()` accepts a `string` specifying the path in the document that needs to be populated with data.
 
 When you use `populate()`, it looks for the user reference in your `todo` document and then fetches the corresponding user data from the `users` collection. It replaces the reference with the actual user data, so you get a combined document.
 
@@ -73,7 +73,7 @@ All todos: [
     text: 'Learn React',
     isComplete: false,
     __v: 6,
-    subTasks: [],
+    subtasks: [],
     assignee: {
       _id: new ObjectId('6581d503b8b46a5314295d66'),
       name: 'Alex',

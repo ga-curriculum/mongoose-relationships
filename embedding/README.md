@@ -36,7 +36,7 @@ Each contact entry is a sub-document with its own `_id`, indicating that it is a
 
 Notice that each contact object has a set of properties that are not the same as the parent object.
 
-```js
+```javascript
 {
   _id: ObjectId("5099803df3f4948bd2e98fff"),
   type: "mobile",
@@ -44,7 +44,7 @@ Notice that each contact object has a set of properties that are not the same as
 }
 ```
 
-This means that subdocuments, in this case contacts, will have their own unique schema. 
+This means that subdocuments, in this case contacts, will have their own unique schema.
 
 > 💡 A sub-document is a document nested within another document. Sub-documents are very similar to regular documents - the difference is that they are not saved individually, but as a group when the parent object is saved.
 
@@ -54,13 +54,13 @@ Embedding connected data in a single document can reduce the number of read oper
 
 ## Embedding sub-documents for `Todos`
 
-Let's say we want to let users create sub-tasks under each `Todo` in our application. For instance, if a user created a `Todo` called "Pack for Vacation", they could have associated sub-tasks like "Toothbrush", "Swimsuit", and "Laptop". 
+Let's say we want to let users create sub-tasks under each `Todo` in our application. For instance, if a user created a `Todo` called "Pack for Vacation", they could have associated sub-tasks like "Toothbrush", "Swimsuit", and "Laptop".
 
-In this scenario, we have a one-to-many relationship where each `Todo` can include multiple items, but each item is specific to only one `Todo`. Therefore, it's logical to embed these items directly within the `Todo`. This approach is more organized, making it easier to manage and access the items associated with each `Todo`. This will help reduce the number of read operations required to obtain our data. 
+In this scenario, we have a one-to-many relationship where each `Todo` can include multiple items, but each item is specific to only one `Todo`. Therefore, it's logical to embed these items directly within the `Todo`. This approach is more organized, making it easier to manage and access the items associated with each `Todo`. This will help reduce the number of read operations required to obtain our data.
 
-First, we'll create a new schema for our sub-tasks. They will need a `text` field and an `isComplete` field: 
+First, we'll create a new schema for our sub-tasks. They will need a `text` field and an `isComplete` field:
 
-```js
+```javascript
 const mongoose = require('mongoose');
 
 // new
@@ -85,10 +85,9 @@ Now that we have two schemas, the next step is to give them a relationship.
 
 To associate this data, we nest our `subtaskSchema` in our `todoSchema`.
 
-Mongoose represents an array of sub-documents as an embedded schema wrapped in square brackets `[schema]`. 
-This indicates that subTasks will be an array whose elements conform to the `subtaskSchema`. 
+Mongoose represents an array of sub-documents as an embedded schema wrapped in square brackets `[schema]`. This indicates that subtasks will be an array whose elements conform to the `subtaskSchema`.
 
-```js
+```javascript
 const mongoose = require('mongoose');
 
 const subtaskSchema = new mongoose.Schema({
@@ -107,13 +106,13 @@ const Todo = mongoose.model('Todo', todoSchema);
 module.exports = Todo;
 ```
 
-> 🏆 As with normal JavaScript conventions, the field name for this array should be a pluralized version of the elements it contains. In this case, it makes sense to refer to an array full of individual subtask elements as `subtasks`. 
+> 🏆 As with normal JavaScript conventions, the field name for this array should be a pluralized version of the elements it contains. In this case, it makes sense to refer to an array full of individual subtask elements as `subtasks`.
 
 ## Adding a `subtask`
 
-Let's create a new function for creating subtasks at the bottom of the **Query Functions** section in the `queries.js` file, under our existing functions: 
+Let's create a new function for creating subtasks at the bottom of the **Query Functions** section in the `queries.js` file, under our existing functions:
 
-```js
+```javascript
 const createSubtask = async () => {
   // Assume that the todo we want to create a
   // sub-task for has the following id: 
@@ -126,7 +125,7 @@ const createSubtask = async () => {
     isComplete: false,
   };
 
-  // Push the new sub-task data into the subTasks array on the todo:
+  // Push the new sub-task data into the subtasks array on the todo:
   const subtask = todo.subtasks.push(subtaskData);
   // Save the parent document: 
   await todo.save();
@@ -134,9 +133,9 @@ const createSubtask = async () => {
 };
 ```
 
-Test your new `createSubtask` function and review the `todo` logged to the console. 
+Test your new `createSubtask` function and review the `todo` logged to the console.
 
-```js
+```javascript
 // queries.js
 
 const runQueries = async () => {

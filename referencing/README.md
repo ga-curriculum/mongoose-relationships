@@ -22,14 +22,12 @@ However, certain scenarios might call for the opposite approach, where the `User
 
 ## Why choose referencing over embedding?
 
-While embedding can be more efficient for read operations, referencing has its advantages. 
+While embedding can be more efficient for read operations, referencing has its advantages.
 
-Referencing may be beneficial if: 
+Referencing may be beneficial if:
 
 - The amount of data stored can exceed the 16MB size limit for a document. Exceeding this size is quite uncommon though - all of Shakespeare’s works combined are smaller than 5 megabytes!
-  
 - Multiple parent documents need access to the same child document and that child’s data changes frequently. For example, a document modeling a *bank account* should be referenced because it could be “owned” by more than one individual. Suppose the account data were embedded in two or more parent documents. Can you imagine how difficult it would be to keep the transactional & balance data in sync?
-  
 - Say you wanted to view all *posts* on a landing page, regardless of the user who posted them, it would take more effort to extract the *posts* from each user if they were embedded. However, it would be quick to get *all posts* from their own collection.
 
 ## Implementing references
@@ -67,8 +65,8 @@ const Todo = mongoose.model('Todo', todoSchema);
 
 module.exports = Todo;
 ```
-> Note: we previously worked with embedded subtasks in the `Todo` model. For this particular lesson on referencing, we won't be needing these subtasks. Feel free to comment out the subtask-related code. This will help keep our focus on referencing without deleting the work you've already done on embedding.
 
+> 💡 Note: we previously worked with embedded subtasks in the `Todo` model. For this particular lesson on referencing, we won't be needing these subtasks. Feel free to comment out the subtask-related code. This will help keep our focus on referencing without deleting the work you've already done on embedding.
 
 Next, let's create a new file to store our `User` model:
 
@@ -93,4 +91,6 @@ const User = mongoose.model('User', userSchema);
 module.exports = User;
 ```
 
-In this scenario, each `todo` document can reference one `user` through the `assignee` field. This field stores the `ObjectId` of the `user` document being referenced. Conversely, a single `user` can be referenced by multiple `todo` documents, which establishes our **one-to-many (1:M) relationship**. In an application, this would mean one user can have multiple tasks assigned to them. Whenever a `todo` document requires information on the associated `user`, its `ObjectId` reference can be used to locate the appropriate document.
+In this scenario, each `todo` document can reference one `user` through the `assignee` field. This field stores the `ObjectId` of the `user` document being referenced. Conversely, a single `user` can be referenced by multiple `todo` documents, which establishes our **one-to-many (1:M) relationship**.
+
+In an application, this would mean one user can have multiple tasks assigned to them. Whenever a `todo` document requires information on the associated `user`, its `ObjectId` reference can be used to locate the appropriate document.

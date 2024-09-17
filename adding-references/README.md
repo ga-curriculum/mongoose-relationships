@@ -71,9 +71,10 @@ New user: {
 Now that we have a `user`, let's build a function to form the relationship between `user` and a `todo`.
 
 To do this we'll use the `findByIdAndUpdate()` mongoose method, which takes three arguments:
- - the first argument is the `id` of the document to look up, 
- - the second is an object with desired updates
- - the third is for options (in this case, `new: true` specifies that the function should return the modified document rather than the original)
+
+- the first argument is the `id` of the document to look up.
+- the second is an object with desired updates.
+- the third is for options (in this case, `new: true` specifies that the function should return the modified document rather than the original).
 
 Create the following function in `queries.js` at the bottom of the **Query Functions** section:
 
@@ -117,7 +118,7 @@ Updated document: {
   text: 'Learn React',
   isComplete: false,
   __v: 6,
-  subTasks: [],
+  subtasks: [],
   assignee: new ObjectId('6581d503b8b46a5314295d66')
 }
 ```

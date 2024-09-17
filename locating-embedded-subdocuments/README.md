@@ -4,7 +4,7 @@
 
 ## The challenge with embedded documents
 
-While embedding documents in Mongoose has many advantages, it introduces complexity when modifying embedded subdocuments. This is because subdocuments are not compiled into models and therefore lack model methods. 
+While embedding documents in Mongoose has many advantages, it introduces complexity when modifying embedded subdocuments. This is because subdocuments are not compiled into models and therefore lack model methods.
 
 In order to perform database operations on a subdocument, developers must interact with the parent document in which the subdocument is held.
 
@@ -28,17 +28,19 @@ Let's create a function to demonstrate finding a subdocument in an array. Add th
 
 ```javascript
 const findSubtask = async () => {
-  const todoId = '657b25adc8146427465857d7';  // Replace with an existing Todo ID
-  const subTaskId = '6580677cf30bfef697ae046f'; // Replace with an existing Subtask ID
+  // Replace 657b25adc8146427465857d7 with an existing Todo ID
+  const todoId = '657b25adc8146427465857d7';
+  // Replace 6580677cf30bfef697ae046f with an existing Subtask ID
+  const subtaskId = '6580677cf30bfef697ae046f'; 
 
   const todo = await Todo.findById(todoId);
-  const subTask = todo.subTasks.id(subTaskId);
+  const subtask = todo.subtasks.id(subtaskId);
 
-  console.log('Subdocument:', subTask);
+  console.log('Subdocument:', subtask);
 };
 ```
 
-> 🚨 Make sure that you replace `todoId` and `subTaskId` with actual `ObjectIds` from your database.
+> 🚨 Make sure that you replace `todoId` and `subtaskId` with actual `ObjectIds` from your database.
 
 Next, call upon `findSubtask` within the `runQueries` function:
 

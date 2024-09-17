@@ -59,6 +59,6 @@ Updated document: {
   text: 'Learn React',
   isComplete: false,
   __v: 2,
-  subTasks: []
+  subtasks: []
 }
 ```

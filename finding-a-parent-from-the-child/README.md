@@ -36,18 +36,18 @@ Let's build out the relevant pieces now. Add the following to `queries.js` at th
 
 ```javascript
 const findParentAndRemoveSubtask = async () => {
-  const todo = await Todo.findOne({
+  const foundTodo = await Todo.findOne({
     'subtasks.text': 'Learn how props work'
   });
 
-  const subtask = todo.subtasks.find((subTask) => {
+  const foundSubtask = foundTodo.subtasks.find((subtask) => {
     return subtask.text === 'Learn how props work'
   });
 
-  subtask.deleteOne();
+  foundSubtask.deleteOne();
 
-  await todo.save();
-  console.log('Updated todo:', todo);
+  await foundTodo.save();
+  console.log('Updated todo:', foundTodo);
 };
 ```
 
@@ -58,7 +58,7 @@ Next, call `findParentAndRemoveSubtask` in the `runQueries` function:
 ```javascript
 const runQueries = async () => {
   console.log('Queries running.');
-  await findParentAndRemoveSubTask();
+  await findParentAndRemoveSubtask();
 };
 ```
 

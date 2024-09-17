@@ -2,7 +2,9 @@
 
 ## About
 
-In this module, you will explore the fundamentals of data relationships in a NoSQL context. This content covers various aspects of managing relationships in MongoDB, from embedding and manipulating subdocuments to understanding and implementing document referencing. By the end of this module, you'll have a robust understanding of how to efficiently structure and interact with related data in Mongoose, preparing you for more complex database management in your full-stack applications. This module is designed for intermediate learners already familiar with MongoDB and Mongoose.
+In this module, you will explore the fundamentals of data relationships in a NoSQL context. This content covers various aspects of managing relationships in MongoDB, from embedding and manipulating subdocuments to understanding and implementing document referencing.
+
+By the end of this module, you'll have a robust understanding of how to efficiently structure and interact with related data in Mongoose, preparing you for more complex database management in your full-stack applications. This module is designed for intermediate learners already familiar with MongoDB and Mongoose.
 
 ## Content
 
