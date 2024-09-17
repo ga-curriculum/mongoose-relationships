@@ -66,15 +66,15 @@ const mongoose = require('mongoose');
 // new
 const subtaskSchema = new mongoose.Schema({
   text: String,
-  isComplete: Boolean
-})
+  isComplete: Boolean,
+});
 
 const todoSchema = new mongoose.Schema({
   text: String,
   isComplete: Boolean,
 });
 
-const Todo = mongoose.model('Todo', todoSchema);
+const Todo = mongoose.model("Todo", todoSchema);
 
 module.exports = Todo;
 ```
@@ -92,16 +92,16 @@ const mongoose = require('mongoose');
 
 const subtaskSchema = new mongoose.Schema({
   text: String,
-  isComplete: Boolean
-})
+  isComplete: Boolean,
+});
 
 const todoSchema = new mongoose.Schema({
   text: String,
   isComplete: Boolean,
-  subtasks: [subtaskSchema] // embedded subtask schema
+  subtasks: [subtaskSchema], // embedded subtask schema
 });
 
-const Todo = mongoose.model('Todo', todoSchema);
+const Todo = mongoose.model("Todo", todoSchema);
 
 module.exports = Todo;
 ```
@@ -115,8 +115,8 @@ Let's create a new function for creating subtasks at the bottom of the **Query F
 ```javascript
 const createSubtask = async () => {
   // Assume that the todo we want to create a
-  // sub-task for has the following id: 
-  const todoId = '657b25adc8146427465857d7'
+  // sub-task for has the following id:
+  const todoId = "657b25adc8146427465857d7";
   // Look up the todo by id, assign the returned object to `todo`
   const todo = await Todo.findById(todoId);
 
@@ -127,19 +127,23 @@ const createSubtask = async () => {
 
   // Push the new sub-task data into the subtasks array on the todo:
   const subtask = todo.subtasks.push(subtaskData);
-  // Save the parent document: 
+  // Save the parent document:
   await todo.save();
-  console.log('Modified todo:', todo);
+  console.log("Modified todo:", todo);
 };
 ```
 
-Test your new `createSubtask` function and review the `todo` logged to the console.
+Test your new `createSubtask` function and review the `todo` logged to the console. You can test the functions in the `queries.js` file using node. Run this command in your terminal:
+
+```bash
+node queries.js
+```
 
 ```javascript
 // queries.js
 
 const runQueries = async () => {
-  console.log('Queries running.');
+  console.log("Queries running.");
   await createSubtask();
 };
 ```
