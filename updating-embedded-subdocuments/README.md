@@ -1,4 +1,7 @@
-# ![Mongoose Relationships - Level Up - Updating Embedded Subdocuments](./assets/hero.png)
+<h1>
+  <span class="headline">Mongoose Relationships</span>
+  <span class="subhead">Updating Embedded Subdocuments</span>
+</h1>
 
 **Learning Objective:** By the end of this lesson, students will be able to update embedded subdocuments by `id` in Mongoose.
 

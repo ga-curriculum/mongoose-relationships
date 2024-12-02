@@ -1,4 +1,7 @@
-# ![Mongoose Relationships - Embedding](./assets/hero.png)
+<h1>
+  <span class="headline">Mongoose Relationships</span>
+  <span class="subhead">Embedding</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will understand how to embed subdocuments in a Mongoose schema.
 

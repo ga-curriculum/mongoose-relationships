@@ -1,4 +1,7 @@
-# ![Mongoose Relationships - Level Up - Joining Referenced Documents](./assets/hero.png)
+<h1>
+  <span class="headline">Mongoose Relationships</span>
+  <span class="subhead">Joining Referenced Documents</span>
+</h1>
 
 **Learning Objective:** By the end of this lesson, students will be able to retrieve referenced documents using the `populate()` method.
 

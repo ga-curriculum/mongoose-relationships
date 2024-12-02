@@ -1,4 +1,7 @@
-# ![Mongoose Relationships - Level Up - Adding References](./assets/hero.png)
+<h1>
+  <span class="headline">Mongoose Relationships</span>
+  <span class="subhead">Adding References</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to create relationships through referenced documents in MongoDB.
 

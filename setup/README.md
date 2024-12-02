@@ -1,4 +1,7 @@
-# ![Mongoose Relationships - Setup](./assets/hero.png)
+<h1>
+  <span class="headline">Mongoose Relationships</span>
+  <span class="subhead">Setup</span>
+</h1>
 
 ## Setup
 
@@ -66,7 +69,7 @@ There must be no spaces between `MONGODB_URI`, `=`, and your atlas connection st
 
 This will make the connection string available in our application on the `process.env.MONGODB_URI` property.
 
-Your connection string will default to a generic unnamed database, as indicated by the `/?` towards the end of the connection string. However, you ***must*** update this to your preferred database name.
+Your connection string will default to a generic unnamed database, as indicated by the `/?` towards the end of the connection string. However, you **_must_** update this to your preferred database name.
 
 **In this application, that will be `todos`.**
 
@@ -144,29 +147,29 @@ const Todo = require('./models/todo.js');
 const connect = async () => {
   await mongoose.connect(process.env.MONGODB_URI);
   console.log('Connected to MongoDB');
-  await runQueries()
+  await runQueries();
 
   await mongoose.disconnect();
   console.log('Disconnected from MongoDB');
   process.exit();
 };
 
-connect()
+connect();
 
 /*----------------------------- Query Functions -----------------------------*/
 
 const createTodo = async () => {
   const todoData = {
-    text: "learn React",
+    text: 'learn React',
     isComplete: false,
   };
   const todo = await Todo.create(todoData);
-  console.log("New todo:", todo);
+  console.log('New todo:', todo);
 };
 
 const findTodos = async () => {
   const todos = await Todo.find({});
-  console.log("All todos:", todos);
+  console.log('All todos:', todos);
 };
 
 /*------------------------------- Run Queries -------------------------------*/
@@ -177,6 +180,6 @@ const runQueries = async () => {
 };
 ```
 
-This code establishes a connection to MongoDB and provides two functions to ***create*** and ***read*** `todo` resources in our database.
+This code establishes a connection to MongoDB and provides two functions to **_create_** and **_read_** `todo` resources in our database.
 
 In this lesson we will build on that functionality, by adding additional data and showing how to create a relationship between the new data and the existing `todo` resource.

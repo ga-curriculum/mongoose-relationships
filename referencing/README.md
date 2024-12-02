@@ -1,4 +1,7 @@
-# ![Mongoose Relationships - Referencing](./assets/hero.png)
+<h1>
+  <span class="headline">Mongoose Relationships</span>
+  <span class="subhead">Referencing</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will understand the concept of referencing related data in MongoDB.
 

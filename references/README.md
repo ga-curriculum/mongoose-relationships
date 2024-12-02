@@ -1,4 +1,7 @@
-# ![Mongoose Relationships - References](./assets/hero.png)
+<h1>
+  <span class="headline">Mongoose Relationships</span>
+  <span class="subhead">References</span>
+</h1>
 
 ## Level Up references
 

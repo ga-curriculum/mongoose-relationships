@@ -1,4 +1,7 @@
-# ![Mongoose Relationships - Level Up - Locating Embedded Sub-documents](./assets/hero.png)
+<h1>
+  <span class="headline">Mongoose Relationships</span>
+  <span class="subhead">Locating Embedded Subdocuments</span>
+</h1>
 
 **Learning Objective:** By the end of this lesson, students will be able to retrieve embedded subdocuments using an `id` in Mongoose.
 
